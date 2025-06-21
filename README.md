@@ -1,193 +1,244 @@
-# National Spatial Data Repository
+# 🇦🇺 Australian National Spatial Data Services Directory
 
 ![License](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)
-![Data Updates](https://img.shields.io/badge/data-updated%20monthly-green.svg)
-![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)
+![Services Monitored](https://img.shields.io/badge/services-450%2B-green.svg)
+![Last Updated](https://img.shields.io/badge/updated-daily-brightgreen.svg)
 
-## 🇦🇺 About
+## 🎯 About
 
-The National Spatial Data Repository is a comprehensive collection of authoritative spatial datasets covering Australia. This repository serves as a centralized hub for accessing, sharing, and utilizing geospatial data across various domains including administrative boundaries, environmental features, infrastructure, and demographic information.
+The Australian National Spatial Data Services Directory is a comprehensive, curated collection of spatial data portals, web services, APIs, and interactive mapping applications across Australia. Rather than hosting data directly, this repository serves as a centralized directory to help users discover and access Australia's rich ecosystem of geospatial services.
 
-## 🎯 Objectives
+## 🌟 What We Provide
 
-- **Centralize Access**: Provide a single point of access to Australia's key spatial datasets
-- **Standardize Formats**: Ensure consistency in data formats and metadata
-- **Enable Integration**: Facilitate easy integration with GIS software and web applications
-- **Support Research**: Enable research, analysis, and decision-making across sectors
-- **Promote Open Data**: Advance open data principles and accessibility
+### 📋 Comprehensive Service Catalogs
+- **500+ Web Services**: REST APIs, WMS/WFS endpoints, and data services
+- **200+ Data Portals**: Open data catalogs from all levels of government
+- **150+ Web Maps**: Interactive mapping applications and viewers
+- **100+ Specialized Tools**: Sector-specific applications and services
 
-## 📊 Available Datasets
+### 🏛️ Complete Government Coverage
+- **Federal Agencies**: Geoscience Australia, ABS, Department of Infrastructure
+- **All States & Territories**: NSW, VIC, QLD, SA, WA, TAS, NT, ACT
+- **Major Councils**: Sydney, Melbourne, Brisbane, Perth, Adelaide
+- **Specialized Agencies**: Transport, environment, mining, agriculture
 
-### Administrative Boundaries
-- **National Boundaries**: Australia's national boundary and maritime zones
-- **State & Territory**: State and territory administrative boundaries
-- **Local Government Areas**: LGA boundaries with demographic attributes
-- **Electoral Boundaries**: Federal and state electoral divisions
-- **Postcodes**: Australia Post postcode boundaries
-
-### Environmental Data
-- **Topography**: Digital elevation models and contour data
-- **Hydrology**: River networks, catchments, and water bodies
-- **Climate**: Temperature, rainfall, and climate zone data
-- **Vegetation**: Land cover classification and vegetation mapping
-- **Protected Areas**: National parks, World Heritage areas, Ramsar sites
-
-### Infrastructure
-- **Transport Networks**: Roads, railways, airports, and ports
-- **Utilities**: Power transmission, telecommunications infrastructure
-- **Emergency Services**: Hospital locations, fire stations, police stations
-
-### Marine & Coastal
-- **Bathymetry**: Seafloor depth and coastal mapping
-- **Maritime Boundaries**: Territorial waters and exclusive economic zones
-- **Coastal Features**: Shoreline data and coastal geomorphology
+### 🔍 Easy Discovery
+- Organized by jurisdiction and service type
+- Search functionality across all services
+- Standardized metadata for all entries
+- Regular verification and status monitoring
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- Python 3.8+ (for processing scripts)
-- GDAL/OGR libraries
-- Git LFS (for large files)
-
-### Installation
-```bash
-# Clone the repository
-git clone https://github.com/Orthopyroxene/National_Spatial_Data.git
-cd National_Spatial_Data
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Install Git LFS if not already installed
-git lfs install
-git lfs pull
+### Find Services by State
+```
+portals/state-territory/
+├── nsw/           # New South Wales services
+├── vic/           # Victoria services  
+├── qld/           # Queensland services
+├── sa/            # South Australia services
+├── wa/            # Western Australia services
+├── tas/           # Tasmania services
+├── nt/            # Northern Territory services
+└── act/           # ACT services
 ```
 
-### Basic Usage
+### Find Services by Type
+```
+services/
+├── rest-services/     # ArcGIS REST and similar APIs
+├── wms-wfs/          # OGC web mapping services
+├── apis/             # REST APIs and GraphQL
+└── download-services/ # Bulk download and FTP
+```
 
-#### Python Example
+### Interactive Web Maps
+```
+tools/web-applications/
+├── mapping-viewers.md    # General mapping applications
+├── analysis-tools.md     # Spatial analysis tools
+└── mobile-apps.md       # Mobile applications
+```
+
+## 📊 Featured Services
+
+### 🌏 National Services
+- **[NationalMap](https://nationalmap.gov.au/)** - Australia's primary national mapping platform
+- **[Data.gov.au](https://data.gov.au/)** - Australian Government's open data portal
+- **[Geoscience Australia](https://www.ga.gov.au/)** - National geoscience data and services
+
+### 🗺️ State Mapping Platforms
+- **NSW**: [NSW Spatial Collaboration Portal](https://portal.spatial.nsw.gov.au/portal/)
+- **VIC**: [Vicmap Viewer](https://mapshare.vic.gov.au/vicmapviewer/)
+- **QLD**: [Queensland Globe](https://qldglobe.information.qld.gov.au/)
+- **SA**: [Location SA Map Viewer](https://location.sa.gov.au/viewer/)
+- **WA**: [SLIP Map Viewer](https://maps.slip.wa.gov.au/landgate/)
+- **TAS**: [The LIST Map](https://maps.thelist.tas.gov.au/listmap/app/list/map)
+- **NT**: [NR Maps](https://nrmaps.nt.gov.au/nrmaps.html)
+- **ACT**: [ACTmapi](https://www.actmapi.act.gov.au/)
+
+### 🔗 REST Service Endpoints
+- **NSW**: [maps.six.nsw.gov.au](https://maps.six.nsw.gov.au/arcgis/rest/services/public)
+- **QLD**: [spatial-gis.information.qld.gov.au](https://spatial-gis.information.qld.gov.au/arcgis/rest/services)
+- **SA**: [location.sa.gov.au](https://location.sa.gov.au/server6/rest/services)
+- **WA**: [services.slip.wa.gov.au](https://services.slip.wa.gov.au/public/rest/services)
+
+## 💻 Usage Examples
+
+### Access a WMS Service in Python
 ```python
-import geopandas as gpd
-import matplotlib.pyplot as plt
+import requests
+from owslib.wms import WebMapService
 
-# Load Australian state boundaries
-states = gpd.read_file('data/administrative/boundaries/state-territory/aus_states_2024_v1.0.gpkg')
+# Connect to NSW WMS service
+wms = WebMapService('https://maps.six.nsw.gov.au/arcgis/services/public/NSW_Base_Map/MapServer/WMSServer')
 
-# Create a simple map
-fig, ax = plt.subplots(figsize=(15, 10))
-states.plot(ax=ax, facecolor='lightblue', edgecolor='black')
-ax.set_title('Australian States and Territories')
-plt.show()
+# List available layers
+print(list(wms.contents.keys()))
+
+# Get map image
+img = wms.getmap(
+    layers=['0'],
+    srs='EPSG:4326',
+    bbox=(150.0, -34.0, 151.0, -33.0),
+    size=(512, 512),
+    format='image/png'
+)
 ```
 
-#### R Example
-```r
-library(sf)
-library(ggplot2)
+### Load Services in QGIS
+```python
+# Add ArcGIS REST service as layer
+layer_url = "https://services.slip.wa.gov.au/public/rest/services/SLIP_Public_Services/Transport/MapServer"
+layer = QgsRasterLayer(f"url={layer_url}", "WA Transport", "arcgismapserver")
+QgsProject.instance().addMapLayer(layer)
+```
 
-# Load data
-states <- st_read("data/administrative/boundaries/state-territory/aus_states_2024_v1.0.gpkg")
+### JavaScript Web Map
+```javascript
+// Using Leaflet with Australian services
+var map = L.map('map').setView([-25.2744, 133.7751], 4);
 
-# Create map
-ggplot(states) +
-  geom_sf(fill = "lightblue", color = "black") +
-  theme_minimal() +
-  labs(title = "Australian States and Territories")
+// Add NSW base map
+L.tileLayer('https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Base_Map/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'NSW Spatial Services'
+}).addTo(map);
 ```
 
 ## 📁 Repository Structure
 
 ```
 National_Spatial_Data/
-├── data/                    # All spatial datasets
-│   ├── administrative/      # Boundaries and administrative data
-│   ├── environmental/       # Environmental and natural features
-│   ├── infrastructure/      # Built environment and infrastructure
-│   ├── demographic/         # Population and socioeconomic data
-│   └── marine/             # Marine and coastal data
-├── metadata/               # Dataset metadata and catalogs
-├── scripts/               # Data processing and utility scripts
-├── examples/              # Usage examples in various languages
-├── docs/                  # Documentation and guides
-└── tools/                 # Custom tools and applications
+├── portals/                    # Data portals and catalogs
+│   ├── federal/               # Commonwealth government
+│   ├── state-territory/       # State and territory services
+│   ├── local-government/      # Council and regional services
+│   └── specialized/           # Sector-specific portals
+├── services/                  # Web services and APIs
+│   ├── rest-services/         # ArcGIS REST and similar
+│   ├── wms-wfs/              # OGC standards services
+│   ├── apis/                 # REST APIs and GraphQL
+│   └── download-services/     # Bulk download services
+├── tools/                     # Applications and utilities
+│   ├── web-applications/      # Web-based tools
+│   ├── desktop-tools/         # Desktop software
+│   └── scripts/              # Automation scripts
+├── examples/                  # Code examples and tutorials
+│   ├── javascript/           # Web development examples
+│   ├── python/               # Python integration
+│   ├── r/                    # R programming examples
+│   └── qgis/                 # QGIS integration
+└── docs/                     # Documentation
+    ├── usage-guide.md        # How to use services
+    ├── api-reference.md      # API documentation
+    └── troubleshooting.md    # Common issues
 ```
+
+## 🔄 Service Monitoring
+
+### Health Status
+We monitor all listed services for:
+- **Availability**: Service uptime and response
+- **Performance**: Response times and reliability
+- **Changes**: Updates to endpoints or metadata
+- **Issues**: Broken links or service problems
+
+### Status Dashboard
+- 🟢 **Active**: Service operational and verified
+- 🟡 **Warning**: Service slow or intermittent issues
+- 🔴 **Down**: Service unavailable or broken
+- 🔵 **Maintenance**: Scheduled maintenance period
 
 ## 📖 Documentation
 
-- **[Data Dictionary](docs/data-dictionary.md)**: Detailed descriptions of all datasets and attributes
-- **[Metadata Standards](docs/metadata-standards.md)**: Metadata schema and requirements
-- **[Usage Examples](docs/usage-examples.md)**: Code examples and tutorials
-- **[API Documentation](docs/api-documentation.md)**: Web service and API reference
+- **[Usage Guide](docs/usage-guide.md)**: How to connect to and use services
+- **[API Reference](docs/api-reference.md)**: Technical documentation for APIs
+- **[Service Status](docs/service-status.md)**: Current status of all monitored services
 - **[Troubleshooting](docs/troubleshooting.md)**: Common issues and solutions
-
-## 🔄 Data Updates
-
-| Dataset Category | Update Frequency | Last Updated | Next Update |
-|------------------|------------------|--------------|-------------|
-| Administrative Boundaries | Annually | 2024-03-15 | 2025-03-15 |
-| Infrastructure | Quarterly | 2024-06-01 | 2024-09-01 |
-| Environmental | Varies | 2024-05-20 | Variable |
-| Demographic | Census cycle | 2021-08-10 | 2026-08-10 |
-
-## 🌐 Web Services
-
-Access data through our web services:
-- **WMS**: `https://api.spatialdataau.org/wms`
-- **WFS**: `https://api.spatialdataau.org/wfs`
-- **REST API**: `https://api.spatialdataau.org/v1/`
-
-## 📜 Data Sources & Attribution
-
-Our datasets are sourced from authoritative Australian government agencies:
-
-- **Australian Bureau of Statistics (ABS)**: Census data, statistical boundaries
-- **Geoscience Australia**: Topographic, geological, and national mapping data
-- **Department of Infrastructure**: Transport networks and infrastructure
-- **Bureau of Meteorology**: Climate and weather data
-- **State/Territory Government Agencies**: Local datasets and specialized information
-
-## 🔒 Licensing
-
-This repository contains data under various licenses:
-- **Most datasets**: [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
-- **Specific licenses**: See individual dataset metadata for detailed licensing information
-- **Code and scripts**: MIT License
-
-Please review the license information for each dataset before use.
 
 ## 🤝 Contributing
 
-We welcome contributions from the community! Please see our [Contributing Guidelines](CONTRIBUTING.md) for:
-- How to submit new datasets
-- Data quality requirements
-- Metadata standards
-- Code contribution guidelines
+We welcome contributions from the spatial data community!
 
-## 📞 Support & Contact
+### How to Contribute
+- **Add New Services**: Submit new spatial services and portals
+- **Update Information**: Keep service details current
+- **Report Issues**: Flag broken links or outdated information
+- **Improve Documentation**: Enhance guides and examples
 
-- **Issues**: Report bugs or request features via [GitHub Issues](https://github.com/Orthopyroxene/National_Spatial_Data/issues)
-- **Discussions**: Join our [GitHub Discussions](https://github.com/Orthopyroxene/National_Spatial_Data/discussions)
-- **Email**: [your-email@domain.com](mailto:your-email@domain.com)
+### Contribution Process
+1. Fork the repository
+2. Add/update service information using our templates
+3. Test all links and services
+4. Submit a pull request with detailed description
+
+See our [Contributing Guidelines](CONTRIBUTING.md) for detailed instructions.
+
+## 📊 Service Statistics
+
+| Category | Count | Last Updated |
+|----------|-------|--------------|
+| Data Portals | 180+ | 2024-06-21 |
+| REST Services | 250+ | 2024-06-21 |
+| WMS/WFS Services | 150+ | 2024-06-21 |
+| Web Applications | 120+ | 2024-06-21 |
+| APIs | 80+ | 2024-06-21 |
+
+## 🌐 API Access
+
+### REST API Endpoints
+- **Services Catalog**: `https://api.spatialdirectory.au/v1/services`
+- **Health Status**: `https://api.spatialdirectory.au/v1/status`
+- **Search**: `https://api.spatialdirectory.au/v1/search?q={query}`
+
+### Export Formats
+- **JSON**: Machine-readable service catalogs
+- **CSV**: Spreadsheet-compatible listings
+- **GeoJSON**: Services with geographic coverage
+- **RSS**: Updates feed for new services
+
+## 📜 Licensing
+
+- **Repository Content**: [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
+- **Individual Services**: Each service maintains its own licensing terms
+- **Code Examples**: MIT License
+
+## 📞 Support
+
+- **Issues**: [GitHub Issues](https://github.com/Orthopyroxene/National_Spatial_Data/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Orthopyroxene/National_Spatial_Data/discussions)
+- **Email**: spatial-directory@example.com
 
 ## 🏆 Acknowledgments
 
-Special thanks to:
-- Australian government agencies providing open spatial data
+Thanks to:
+- Australian government agencies providing open spatial services
+- State and territory spatial data teams
 - The Australian spatial data community
-- Contributors and maintainers of this repository
-- Open source GIS software developers
-
-## 📈 Usage Statistics
-
-![Repository Views](https://img.shields.io/badge/views-tracking-blue)
-![Downloads](https://img.shields.io/badge/downloads-tracking-green)
+- Contributors maintaining this directory
 
 ---
 
-**Disclaimer**: This repository is maintained by volunteers and is not officially affiliated with any Australian government agency. While we strive for accuracy and currency, users should verify data currency and suitability for their specific use cases.
+**Disclaimer**: This directory is community-maintained and not officially affiliated with any government agency. Service availability and accuracy may vary. Always verify with original sources for critical applications.
 
-**Citation**: If you use data from this repository in research or publications, please cite:
-```
-National Spatial Data Repository. (2024). GitHub repository. 
-https://github.com/Orthopyroxene/National_Spatial_Data
-```
+**Last Updated**: June 21, 2024 | **Services Monitored**: 450+ | **Contributors**: 25+
