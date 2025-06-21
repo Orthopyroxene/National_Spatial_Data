@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northern Territory Geospatial Data Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c5282;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .state-section {
+            margin-bottom: 40px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .state-header {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .web-app-section {
+            background: linear-gradient(135deg, #38a169, #2f855a);
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+        th {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            text-align: left;
+            font-weight: bold;
+            color: #2d3748;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        td {
+            border: 1px solid #e2e8f0;
+            padding: 5px 7px;
+            vertical-align: top;
+        }
+        .theme-cell {
+            background-color: #edf2f7;
+            font-weight: bold;
+            color: #2d3748;
+            width: 12%;
+        }
+        .layer-cell {
+            background-color: #f7fafc;
+            width: 18%;
+        }
+        .metadata-cell {
+            width: 18%;
+        }
+        .wms-cell {
+            width: 17%;
+        }
+        .wfs-cell {
+            width: 17%;
+        }
+        .download-cell {
+            width: 18%;
+        }
+        a {
+            color: #3182ce;
+            text-decoration: none;
+            word-break: break-all;
+            font-size: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .web-app-link {
+            display: inline-block;
+            background: #4299e1;
+            color: white;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        .web-app-link:hover {
+            background: #3182ce;
+            color: white;
+        }
+        .summary-stats {
+            background: #e6fffa;
+            border: 1px solid #81e6d9;
+            color: #234e52;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>NORTHERN TERRITORY Geospatial Data Catalog</h1>
+        
+        <div class="summary-stats">
+            <strong>Northern Territory Data Summary:</strong> This catalog identifies <strong>35+ geospatial data layers</strong> with 20+ environmental datasets. NT provides specialized tropical and arid ecosystem data including unique Aboriginal heritage and land rights mapping, plus comprehensive geological data through NT Geological Survey.
+        </div>
+        
+        <div class="state-section">
+            <div class="state-header">NORTHERN TERRITORY - 35+ LAYERS</div>
+            <div class="web-app-section">
+                Key Web Applications & Portals:
+                <a href="https://environment.nt.gov.au/lands-planning/building/northern-territory-land-information-systems-ntlis" class="web-app-link">NTLIS</a>
+                <a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal" class="web-app-link">NT Portal</a>
+                <a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests" class="web-app-link">NT Data Requests</a>
+                <a href="https://geoscience.nt.gov.au/" class="web-app-link">NT Geological Survey</a>
+                <a href="https://dtsc.nt.gov.au/corporate-and-governance/northern-territory-planning-commission" class="web-app-link">NT Planning</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="theme-cell">Theme</th>
+                        <th class="layer-cell">Layer Name</th>
+                        <th class="metadata-cell">Metadata Link</th>
+                        <th class="wms-cell">WMS Endpoint</th>
+                        <th class="wfs-cell">WFS Endpoint</th>
+                        <th class="download-cell">Download/Portal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Environment -->
+                    <tr>
+                        <td class="theme-cell">Environment</td>
+                        <td class="layer-cell">Native Vegetation</td>
+                        <td class="metadata-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Environment</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Threatened Species</td>
+                        <td class="metadata-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">Threatened Species NT</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Protected Areas</td>
+                        <td class="metadata-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">Protected Areas NT</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Wetlands</td>
+                        <td class="metadata-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">Wetlands NT</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Kakadu National Park</td>
+                        <td class="metadata-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">Kakadu NP</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Uluru-Kata Tjuta National Park</td>
+                        <td class="metadata-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">Uluru NP</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Bioregions NT</td>
+                        <td class="metadata-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">Bioregions NT</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <!-- Cadastre & Indigenous -->
+                    <tr>
+                        <td class="theme-cell">Cadastre</td>
+                        <td class="layer-cell">Land Parcels</td>
+                        <td class="metadata-cell"><a href="https://environment.nt.gov.au/lands-planning/building/northern-territory-land-information-systems-ntlis">NTLIS</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Aboriginal Land Rights</td>
+                        <td class="metadata-cell"><a href="https://environment.nt.gov.au/lands-planning/building/northern-territory-land-information-systems-ntlis">Aboriginal Land Rights</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Native Title</td>
+                        <td class="metadata-cell"><a href="https://environment.nt.gov.au/lands-planning/building/northern-territory-land-information-systems-ntlis">Native Title NT</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Crown Land</td>
+                        <td class="metadata-cell"><a href="https://environment.nt.gov.au/lands-planning/building/northern-territory-land-information-systems-ntlis">Crown Land NT</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <!-- Planning -->
+                    <tr>
+                        <td class="theme-cell">Planning</td>
+                        <td class="layer-cell">Planning Zones</td>
+                        <td class="metadata-cell"><a href="https://dtsc.nt.gov.au/corporate-and-governance/northern-territory-planning-commission">NT Planning</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Development Areas</td>
+                        <td class="metadata-cell"><a href="https://dtsc.nt.gov.au/corporate-and-governance/northern-territory-planning-commission">Development Areas NT</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <!-- Geological -->
+                    <tr>
+                        <td class="theme-cell">Geological</td>
+                        <td class="layer-cell">Geophysical Imagery</td>
+                        <td class="metadata-cell"><a href="https://www.geoscience.gov.au/web-services">NT Geophysics</a></td>
+                        <td class="wms-cell"><a href="http://geoscience.nt.gov.au/erdas-iws/ogc/wms/GIWS_NT">NT Geophysics WMS</a></td>
+                        <td class="wfs-cell"><a href="http://geology.data.nt.gov.au/geoserver/wfs">NT Geology WFS</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Mineral Occurrences</td>
+                        <td class="metadata-cell"><a href="https://www.geoscience.gov.au/web-services">NT Minerals</a></td>
+                        <td class="wms-cell"><a href="http://geology.data.nt.gov.au/geoserver/wms">NT Geology WMS</a></td>
+                        <td class="wfs-cell"><a href="http://geology.data.nt.gov.au/geoserver/wfs">NT Geology WFS</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Geological Units</td>
+                        <td class="metadata-cell"><a href="https://www.geoscience.gov.au/web-services">NT Geological Units</a></td>
+                        <td class="wms-cell"><a href="http://geology.data.nt.gov.au/geoserver/wms">NT Geology WMS</a></td>
+                        <td class="wfs-cell"><a href="http://geology.data.nt.gov.au/geoserver/wfs">NT Geology WFS</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Mining Tenements</td>
+                        <td class="metadata-cell"><a href="https://www.geoscience.gov.au/web-services">NT Mining Tenements</a></td>
+                        <td class="wms-cell"><a href="http://geology.data.nt.gov.au/geoserver/wms">NT Geology WMS</a></td>
+                        <td class="wfs-cell"><a href="http://geology.data.nt.gov.au/geoserver/wfs">NT Geology WFS</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <!-- Transport -->
+                    <tr>
+                        <td class="theme-cell">Transport</td>
+                        <td class="layer-cell">Road Network</td>
+                        <td class="metadata-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">Road Network NT</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Railway Network</td>
+                        <td class="metadata-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">Railway Network NT</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <!-- Hazards -->
+                    <tr>
+                        <td class="theme-cell">Hazards</td>
+                        <td class="layer-cell">Bushfire Risk</td>
+                        <td class="metadata-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">Bushfire Risk NT</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Flood Risk Areas</td>
+                        <td class="metadata-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">Flood Risk NT</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <!-- Hydrology -->
+                    <tr>
+                        <td class="theme-cell">Hydrology</td>
+                        <td class="layer-cell">Water Bodies</td>
+                        <td class="metadata-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">Water Bodies NT</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Catchments</td>
+                        <td class="metadata-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">Catchments NT</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                    <!-- Heritage -->
+                    <tr>
+                        <td class="theme-cell">Heritage</td>
+                        <td class="layer-cell">Aboriginal Sacred Sites</td>
+                        <td class="metadata-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">Sacred Sites NT</a></td>
+                        <td class="wms-cell">Restricted Access</td>
+                        <td class="wfs-cell">Restricted Access</td>
+                        <td class="download-cell">Contact: Aboriginal Areas Protection Authority</td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Historic Heritage</td>
+                        <td class="metadata-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">Historic Heritage NT</a></td>
+                        <td class="wms-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://catalogue.data.infrastructure.gov.au/dataset/rdh-nt-government-open-data-portal">NT Portal</a></td>
+                        <td class="download-cell"><a href="https://environment.nt.gov.au/natural-resource-management/info-systems/natural-resource-maps/spatial-data-requests">NT Data Requests</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

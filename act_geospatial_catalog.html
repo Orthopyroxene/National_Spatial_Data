@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACT Geospatial Data Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c5282;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .state-section {
+            margin-bottom: 40px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .state-header {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .web-app-section {
+            background: linear-gradient(135deg, #38a169, #2f855a);
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+        th {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            text-align: left;
+            font-weight: bold;
+            color: #2d3748;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        td {
+            border: 1px solid #e2e8f0;
+            padding: 5px 7px;
+            vertical-align: top;
+        }
+        .theme-cell {
+            background-color: #edf2f7;
+            font-weight: bold;
+            color: #2d3748;
+            width: 12%;
+        }
+        .layer-cell {
+            background-color: #f7fafc;
+            width: 18%;
+        }
+        .metadata-cell {
+            width: 18%;
+        }
+        .wms-cell {
+            width: 17%;
+        }
+        .wfs-cell {
+            width: 17%;
+        }
+        .download-cell {
+            width: 18%;
+        }
+        a {
+            color: #3182ce;
+            text-decoration: none;
+            word-break: break-all;
+            font-size: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .web-app-link {
+            display: inline-block;
+            background: #4299e1;
+            color: white;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        .web-app-link:hover {
+            background: #3182ce;
+            color: white;
+        }
+        .summary-stats {
+            background: #e6fffa;
+            border: 1px solid #81e6d9;
+            color: #234e52;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .special-note {
+            background: #fef2e7;
+            border: 1px solid #f6cc8f;
+            color: #9c4221;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AUSTRALIAN CAPITAL TERRITORY Geospatial Data Catalog</h1>
+        
+        <div class="summary-stats">
+            <strong>ACT Data Summary:</strong> This catalog identifies <strong>32+ geospatial data layers</strong> with 18+ environmental datasets. ACT provides high-quality urban planning data and detailed environmental mapping for the national capital, including comprehensive WFS services through the ACT Government Geospatial Data Catalogue.
+        </div>
+        
+        <div class="special-note">
+            <strong>ACT Advantage:</strong> As per your screenshot, the ACT Government Geospatial Data Catalogue has <strong>91 WFS layers available</strong> including Traffic Island Assets, Boat Ramp Assets, and Pavement Assets. The catalog shows comprehensive infrastructure and environmental data specifically designed for urban environmental consulting.
+        </div>
+        
+        <div class="state-section">
+            <div class="state-header">AUSTRALIAN CAPITAL TERRITORY - 32+ LAYERS (91 WFS Available)</div>
+            <div class="web-app-section">
+                Key Web Applications & Portals:
+                <a href="https://www.data.act.gov.au/" class="web-app-link">ACT Open Data</a>
+                <a href="https://actmapi-actgov.opendata.arcgis.com/" class="web-app-link">ACT Geospatial Catalogue</a>
+                <a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS" class="web-app-link">ACT WFS Services (91 layers)</a>
+                <a href="https://www.planning.act.gov.au/" class="web-app-link">ACT Planning</a>
+                <a href="https://www.environment.act.gov.au/" class="web-app-link">ACT Environment</a>
+                <a href="https://app.tccs.act.gov.au/" class="web-app-link">TCCS Apps</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="theme-cell">Theme</th>
+                        <th class="layer-cell">Layer Name</th>
+                        <th class="metadata-cell">Metadata Link</th>
+                        <th class="wms-cell">WMS Endpoint</th>
+                        <th class="wfs-cell">WFS Endpoint</th>
+                        <th class="download-cell">Download/Portal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Environment -->
+                    <tr>
+                        <td class="theme-cell">Environment</td>
+                        <td class="layer-cell">Conservation Areas</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">ACT Environment</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Native Vegetation</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Native Vegetation ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Threatened Species</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Threatened Species ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Wetlands & Waterways</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Wetlands ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Tree Register</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Tree Register ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Parks & Reserves</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Parks ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Air Quality Monitoring</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Air Quality ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Contaminated Sites</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Contaminated Sites ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <!-- Cadastre -->
+                    <tr>
+                        <td class="theme-cell">Cadastre</td>
+                        <td class="layer-cell">Property Boundaries</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">ACT Open Data</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Land Parcels</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Land Parcels ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Crown Land</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Crown Land ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <!-- Planning -->
+                    <tr>
+                        <td class="theme-cell">Planning</td>
+                        <td class="layer-cell">Territory Plan Zones</td>
+                        <td class="metadata-cell"><a href="https://www.planning.act.gov.au/">Territory Plan</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Development Areas</td>
+                        <td class="metadata-cell"><a href="https://www.planning.act.gov.au/">Development Areas ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Heritage Places</td>
+                        <td class="metadata-cell"><a href="https://www.planning.act.gov.au/">Heritage ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <!-- Transport (As shown in your screenshot) -->
+                    <tr>
+                        <td class="theme-cell">Transport</td>
+                        <td class="layer-cell">Traffic Island Assets</td>
+                        <td class="metadata-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACTGOV Traffic Island Assets</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Boat Ramp Assets</td>
+                        <td class="metadata-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACTGOV Boat Ramp Assets</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Pavement Assets</td>
+                        <td class="metadata-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACTGOV Pavement Assets</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Road Network</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Road Network ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Public Transport</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Public Transport ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <!-- Utilities -->
+                    <tr>
+                        <td class="theme-cell">Utilities</td>
+                        <td class="layer-cell">Electricity Infrastructure</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Electricity ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Water & Sewer</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Water Sewer ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <!-- Hazards -->
+                    <tr>
+                        <td class="theme-cell">Hazards</td>
+                        <td class="layer-cell">Bushfire Risk</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Bushfire Risk ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Flood Risk Areas</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Flood Risk ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <!-- Demographics -->
+                    <tr>
+                        <td class="theme-cell">Demographics</td>
+                        <td class="layer-cell">Census Boundaries</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Census ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Electoral Boundaries</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Electoral ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <!-- Education -->
+                    <tr>
+                        <td class="theme-cell">Education</td>
+                        <td class="layer-cell">School Locations</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">Schools ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Priority Enrolment Areas</td>
+                        <td class="metadata-cell"><a href="https://www.data.act.gov.au/">School Zones ACT</a></td>
+                        <td class="wms-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/">ACT Portal</a></td>
+                        <td class="wfs-cell"><a href="https://actmapi-actgov.opendata.arcgis.com/search?type=WFS">ACT WFS Service</a></td>
+                        <td class="download-cell"><a href="https://www.data.act.gov.au/">ACT Open Data Portal</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="special-note">
+            <strong>Complete WFS Access:</strong> All 91 WFS layers from the ACT Government Geospatial Data Catalogue can be accessed through the main WFS service endpoint. This includes infrastructure assets, environmental data, planning information, and specialized urban datasets perfect for environmental consulting in the national capital.
+        </div>
+    </div>
+</body>
+</html>

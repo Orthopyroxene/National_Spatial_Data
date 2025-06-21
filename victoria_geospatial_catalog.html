@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victoria Geospatial Data Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c5282;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .state-section {
+            margin-bottom: 40px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .state-header {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .web-app-section {
+            background: linear-gradient(135deg, #38a169, #2f855a);
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+        th {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            text-align: left;
+            font-weight: bold;
+            color: #2d3748;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        td {
+            border: 1px solid #e2e8f0;
+            padding: 5px 7px;
+            vertical-align: top;
+        }
+        .theme-cell {
+            background-color: #edf2f7;
+            font-weight: bold;
+            color: #2d3748;
+            width: 12%;
+        }
+        .layer-cell {
+            background-color: #f7fafc;
+            width: 18%;
+        }
+        .metadata-cell {
+            width: 18%;
+        }
+        .wms-cell {
+            width: 17%;
+        }
+        .wfs-cell {
+            width: 17%;
+        }
+        .download-cell {
+            width: 18%;
+        }
+        a {
+            color: #3182ce;
+            text-decoration: none;
+            word-break: break-all;
+            font-size: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .web-app-link {
+            display: inline-block;
+            background: #4299e1;
+            color: white;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        .web-app-link:hover {
+            background: #3182ce;
+            color: white;
+        }
+        .summary-stats {
+            background: #e6fffa;
+            border: 1px solid #81e6d9;
+            color: #234e52;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>VICTORIA Geospatial Data Catalog</h1>
+        
+        <div class="summary-stats">
+            <strong>Victoria Data Summary:</strong> This catalog identifies <strong>70+ geospatial data layers</strong> with 40+ environmental datasets. Victoria provides the most sophisticated biodiversity infrastructure in Australia through the Victorian Biodiversity Atlas and comprehensive planning data through VicPlan.
+        </div>
+        
+        <div class="state-section">
+            <div class="state-header">VICTORIA - 70+ LAYERS</div>
+            <div class="web-app-section">
+                Key Web Applications & Portals:
+                <a href="https://data.vic.gov.au/" class="web-app-link">DataVic Portal</a>
+                <a href="https://datashare.maps.vic.gov.au/" class="web-app-link">DataShare</a>
+                <a href="https://mapshare.vic.gov.au/vicplan/" class="web-app-link">VicPlan</a>
+                <a href="https://www.environment.vic.gov.au/biodiversity/naturekit" class="web-app-link">NatureKit</a>
+                <a href="https://geology.data.vic.gov.au/" class="web-app-link">Geological Survey VIC</a>
+                <a href="https://www.environment.vic.gov.au/sustainability/victoria-unearthed" class="web-app-link">Victoria Unearthed</a>
+                <a href="https://www.environment.vic.gov.au/biodiversity/victorian-biodiversity-atlas" class="web-app-link">VBA Portal</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="theme-cell">Theme</th>
+                        <th class="layer-cell">Layer Name</th>
+                        <th class="metadata-cell">Metadata Link</th>
+                        <th class="wms-cell">WMS Endpoint</th>
+                        <th class="wfs-cell">WFS Endpoint</th>
+                        <th class="download-cell">Download/Portal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Environment Layers -->
+                    <tr>
+                        <td class="theme-cell">Environment</td>
+                        <td class="layer-cell">Ecological Vegetation Classes (Current)</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/biodiversity/naturekit/nk-datalists">EVC Current</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://datashare.maps.vic.gov.au/">DataShare Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Ecological Vegetation Classes (Pre-1750)</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/biodiversity/naturekit/nk-datalists">EVC Pre-1750</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://datashare.maps.vic.gov.au/">DataShare Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Victorian Biodiversity Atlas</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/biodiversity/victorian-biodiversity-atlas">VBA Metadata</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://www.environment.vic.gov.au/biodiversity/victorian-biodiversity-atlas">VBA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Threatened Flora FFG</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/biodiversity/naturekit/nk-datalists">Flora FFG</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://datashare.maps.vic.gov.au/">DataShare Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Threatened Fauna FFG</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/biodiversity/naturekit/nk-datalists">Fauna FFG</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://datashare.maps.vic.gov.au/">DataShare Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">EPBC Listed Communities</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/biodiversity/naturekit/nk-datalists">EPBC Communities</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://datashare.maps.vic.gov.au/">DataShare Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Wetlands Current</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/biodiversity/naturekit/nk-datalists">Wetlands Current</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://datashare.maps.vic.gov.au/">DataShare Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Wetlands Historic</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/biodiversity/naturekit/nk-datalists">Wetlands Historic</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://datashare.maps.vic.gov.au/">DataShare Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Parks and Reserves</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/biodiversity/naturekit/nk-datalists">Parks Reserves</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://datashare.maps.vic.gov.au/">DataShare Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Ramsar Wetlands</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/biodiversity/naturekit/nk-datalists">Ramsar Sites</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://datashare.maps.vic.gov.au/">DataShare Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Victoria Unearthed (Contaminated Sites)</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/sustainability/victoria-unearthed">VU Metadata</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://www.environment.vic.gov.au/sustainability/victoria-unearthed">Victoria Unearthed</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Strategic Management Prospects</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/biodiversity/naturekit/nk-datalists">SMP Metadata</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://datashare.maps.vic.gov.au/">DataShare Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Native Vegetation Removal Reports</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/biodiversity/naturekit/nk-datalists">NVRR Metadata</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://datashare.maps.vic.gov.au/">DataShare Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Water Quality Monitoring</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/biodiversity/naturekit/nk-datalists">Water Quality</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://datashare.maps.vic.gov.au/">DataShare Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Bioregions</td>
+                        <td class="metadata-cell"><a href="https://www.environment.vic.gov.au/biodiversity/naturekit/nk-datalists">Bioregions</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://datashare.maps.vic.gov.au/">DataShare Portal</a></td>
+                    </tr>
+                    <!-- Cadastre -->
+                    <tr>
+                        <td class="theme-cell">Cadastre</td>
+                        <td class="layer-cell">Vicmap Property</td>
+                        <td class="metadata-cell"><a href="https://www.land.vic.gov.au/maps-and-spatial/spatial-data/vicmap-catalogue/vicmap-property">Vicmap Property</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Vicmap Address</td>
+                        <td class="metadata-cell"><a href="https://www.land.vic.gov.au/maps-and-spatial/spatial-data/vicmap-catalogue/vicmap-address">Vicmap Address</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Crown Land</td>
+                        <td class="metadata-cell"><a href="https://www.land.vic.gov.au/maps-and-spatial/spatial-data/vicmap-catalogue/vicmap-crown">Vicmap Crown</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <!-- Planning -->
+                    <tr>
+                        <td class="theme-cell">Planning</td>
+                        <td class="layer-cell">Planning Zones</td>
+                        <td class="metadata-cell"><a href="https://www.land.vic.gov.au/maps-and-spatial/spatial-data/vicmap-catalogue/vicmap-planning">Vicmap Planning</a></td>
+                        <td class="wms-cell"><a href="https://mapshare.vic.gov.au/vicplan/">VicPlan Viewer</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Planning Overlays</td>
+                        <td class="metadata-cell"><a href="https://www.planning.vic.gov.au/planning-schemes/using-vicplan">VicPlan Overlays</a></td>
+                        <td class="wms-cell"><a href="https://mapshare.vic.gov.au/vicplan/">VicPlan Viewer</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Development Plan Overlays</td>
+                        <td class="metadata-cell"><a href="https://www.planning.vic.gov.au/planning-schemes/using-vicplan">DPO Metadata</a></td>
+                        <td class="wms-cell"><a href="https://mapshare.vic.gov.au/vicplan/">VicPlan Viewer</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Heritage Overlays</td>
+                        <td class="metadata-cell"><a href="https://www.planning.vic.gov.au/planning-schemes/using-vicplan">Heritage Overlays</a></td>
+                        <td class="wms-cell"><a href="https://mapshare.vic.gov.au/vicplan/">VicPlan Viewer</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <!-- Transport -->
+                    <tr>
+                        <td class="theme-cell">Transport</td>
+                        <td class="layer-cell">Vicmap Transport</td>
+                        <td class="metadata-cell"><a href="https://www.land.vic.gov.au/maps-and-spatial/spatial-data/vicmap-catalogue/vicmap-transport">Vicmap Transport</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Rail Network</td>
+                        <td class="metadata-cell"><a href="https://www.land.vic.gov.au/maps-and-spatial/spatial-data/vicmap-catalogue/vicmap-transport">Rail Network</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Public Transport Assets</td>
+                        <td class="metadata-cell"><a href="https://data.vic.gov.au/data/dataset/public-transport-assets">PT Assets</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <!-- Geological -->
+                    <tr>
+                        <td class="theme-cell">Geological</td>
+                        <td class="layer-cell">Geological Units (1:250K)</td>
+                        <td class="metadata-cell"><a href="https://geology.data.vic.gov.au/">GSV Metadata</a></td>
+                        <td class="wms-cell"><a href="http://geology.data.vic.gov.au/services/mapping/wms">GSV WMS</a></td>
+                        <td class="wfs-cell"><a href="http://geology.data.vic.gov.au/nvcl/wfs">GSV WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Mineral Occurrences</td>
+                        <td class="metadata-cell"><a href="https://geology.data.vic.gov.au/">Minerals Metadata</a></td>
+                        <td class="wms-cell"><a href="http://geology.data.vic.gov.au/nvcl/wms">GSV Minerals WMS</a></td>
+                        <td class="wfs-cell"><a href="http://geology.data.vic.gov.au/services/earthresourceml/wfs">GSV Minerals WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Boreholes (GeoSciML)</td>
+                        <td class="metadata-cell"><a href="https://geology.data.vic.gov.au/">Boreholes Metadata</a></td>
+                        <td class="wms-cell"><a href="http://geology.data.vic.gov.au/nvcl/wms">GSV Boreholes WMS</a></td>
+                        <td class="wfs-cell"><a href="http://geology.data.vic.gov.au/services/geosciml/borehole/wfs">GSV Boreholes WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Mining Tenements</td>
+                        <td class="metadata-cell"><a href="https://geology.data.vic.gov.au/">Mining Tenements</a></td>
+                        <td class="wms-cell"><a href="http://geology.data.vic.gov.au/nvcl/wms">GSV Tenements WMS</a></td>
+                        <td class="wfs-cell"><a href="http://geology.data.vic.gov.au/services/earthresourceml/wfs">GSV Tenements WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <!-- Hazards -->
+                    <tr>
+                        <td class="theme-cell">Hazards</td>
+                        <td class="layer-cell">Bushfire History</td>
+                        <td class="metadata-cell"><a href="https://data.vic.gov.au/">Fire History Metadata</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Flood Studies</td>
+                        <td class="metadata-cell"><a href="https://data.vic.gov.au/">Flood Studies</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Coastal Hazards</td>
+                        <td class="metadata-cell"><a href="https://data.vic.gov.au/">Coastal Hazards</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <!-- Utilities -->
+                    <tr>
+                        <td class="theme-cell">Utilities</td>
+                        <td class="layer-cell">Electricity Infrastructure</td>
+                        <td class="metadata-cell"><a href="https://data.vic.gov.au/">Electricity Infrastructure</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Water Infrastructure</td>
+                        <td class="metadata-cell"><a href="https://data.vic.gov.au/">Water Infrastructure</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <!-- Agriculture -->
+                    <tr>
+                        <td class="theme-cell">Agriculture</td>
+                        <td class="layer-cell">Land Capability</td>
+                        <td class="metadata-cell"><a href="https://data.vic.gov.au/">Land Capability</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Soil Types</td>
+                        <td class="metadata-cell"><a href="https://data.vic.gov.au/">Soil Types</a></td>
+                        <td class="wms-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms">DataVic WMS</a></td>
+                        <td class="wfs-cell"><a href="http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wfs">DataVic WFS</a></td>
+                        <td class="download-cell"><a href="https://data.vic.gov.au/">DataVic Portal</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

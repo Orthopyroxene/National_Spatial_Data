@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Australia Geospatial Data Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c5282;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .state-section {
+            margin-bottom: 40px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .state-header {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .web-app-section {
+            background: linear-gradient(135deg, #38a169, #2f855a);
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+        th {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            text-align: left;
+            font-weight: bold;
+            color: #2d3748;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        td {
+            border: 1px solid #e2e8f0;
+            padding: 5px 7px;
+            vertical-align: top;
+        }
+        .theme-cell {
+            background-color: #edf2f7;
+            font-weight: bold;
+            color: #2d3748;
+            width: 12%;
+        }
+        .layer-cell {
+            background-color: #f7fafc;
+            width: 18%;
+        }
+        .metadata-cell {
+            width: 18%;
+        }
+        .wms-cell {
+            width: 17%;
+        }
+        .wfs-cell {
+            width: 17%;
+        }
+        .download-cell {
+            width: 18%;
+        }
+        a {
+            color: #3182ce;
+            text-decoration: none;
+            word-break: break-all;
+            font-size: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .web-app-link {
+            display: inline-block;
+            background: #4299e1;
+            color: white;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        .web-app-link:hover {
+            background: #3182ce;
+            color: white;
+        }
+        .summary-stats {
+            background: #e6fffa;
+            border: 1px solid #81e6d9;
+            color: #234e52;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SOUTH AUSTRALIA Geospatial Data Catalog</h1>
+        
+        <div class="summary-stats">
+            <strong>South Australia Data Summary:</strong> This catalog identifies <strong>45+ geospatial data layers</strong> with 28+ environmental datasets. SA is renowned for the comprehensive SARIG (South Australian Resources Information Gateway) providing world-class geological and mining data, plus excellent planning tools through SAPPA.
+        </div>
+        
+        <div class="state-section">
+            <div class="state-header">SOUTH AUSTRALIA - 45+ LAYERS</div>
+            <div class="web-app-section">
+                Key Web Applications & Portals:
+                <a href="https://map.sarig.sa.gov.au/" class="web-app-link">SARIG Portal</a>
+                <a href="https://data.sa.gov.au/" class="web-app-link">Data.SA Portal</a>
+                <a href="https://location.sa.gov.au/viewer/" class="web-app-link">LocationSA Viewer</a>
+                <a href="https://sappa.plan.sa.gov.au/" class="web-app-link">SAPPA</a>
+                <a href="https://data.environment.sa.gov.au/NatureMaps/Pages/default.aspx" class="web-app-link">NatureMaps</a>
+                <a href="https://www.energymining.sa.gov.au/industry/geological-survey/products-and-services/map-viewers-databases-and-services/sarig-map" class="web-app-link">SARIG Map</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="theme-cell">Theme</th>
+                        <th class="layer-cell">Layer Name</th>
+                        <th class="metadata-cell">Metadata Link</th>
+                        <th class="wms-cell">WMS Endpoint</th>
+                        <th class="wfs-cell">WFS Endpoint</th>
+                        <th class="download-cell">Download/Portal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Environment Layers -->
+                    <tr>
+                        <td class="theme-cell">Environment</td>
+                        <td class="layer-cell">Native Vegetation</td>
+                        <td class="metadata-cell"><a href="https://www.environment.sa.gov.au/topics/science/mapland/spatial-gis-data">DEW Spatial Data</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.environment.sa.gov.au/NatureMaps/Pages/default.aspx">NatureMaps Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Protected Areas</td>
+                        <td class="metadata-cell"><a href="https://www.environment.sa.gov.au/topics/science/mapland/spatial-gis-data">Protected Areas</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Wetlands</td>
+                        <td class="metadata-cell"><a href="https://www.environment.sa.gov.au/topics/science/mapland/spatial-gis-data">Wetlands Metadata</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Bioregions</td>
+                        <td class="metadata-cell"><a href="https://www.environment.sa.gov.au/topics/science/mapland/spatial-gis-data">Bioregions SA</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Heritage Agreements</td>
+                        <td class="metadata-cell"><a href="https://www.environment.sa.gov.au/topics/science/mapland/spatial-gis-data">Heritage Agreements</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <!-- Cadastre -->
+                    <tr>
+                        <td class="theme-cell">Cadastre</td>
+                        <td class="layer-cell">Property Boundaries</td>
+                        <td class="metadata-cell"><a href="https://sappa.plan.sa.gov.au/">SAPPA</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell">Contact: dataaccess@landservices.com.au</td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/useful_links">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Cadastral Parcels</td>
+                        <td class="metadata-cell"><a href="https://sappa.plan.sa.gov.au/">Cadastral Metadata</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell">Contact: dataaccess@landservices.com.au</td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Crown Land</td>
+                        <td class="metadata-cell"><a href="https://data.sa.gov.au/">Crown Land SA</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <!-- Planning -->
+                    <tr>
+                        <td class="theme-cell">Planning</td>
+                        <td class="layer-cell">Planning Zones</td>
+                        <td class="metadata-cell"><a href="https://plan.sa.gov.au/our_planning_system/plan_sa/south_australian_property_and_planning_atlas">Planning Atlas</a></td>
+                        <td class="wms-cell"><a href="https://sappa.plan.sa.gov.au/">SAPPA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Policy Areas</td>
+                        <td class="metadata-cell"><a href="https://plan.sa.gov.au/our_planning_system/plan_sa/south_australian_property_and_planning_atlas">Policy Areas</a></td>
+                        <td class="wms-cell"><a href="https://sappa.plan.sa.gov.au/">SAPPA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Planning Overlays</td>
+                        <td class="metadata-cell"><a href="https://plan.sa.gov.au/our_planning_system/plan_sa/south_australian_property_and_planning_atlas">Planning Overlays</a></td>
+                        <td class="wms-cell"><a href="https://sappa.plan.sa.gov.au/">SAPPA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <!-- Geological (SARIG) -->
+                    <tr>
+                        <td class="theme-cell">Geological</td>
+                        <td class="layer-cell">Geological Units</td>
+                        <td class="metadata-cell"><a href="https://www.geoscience.gov.au/web-services">SARIG Metadata</a></td>
+                        <td class="wms-cell"><a href="https://sarigdata.pir.sa.gov.au/nvcl/geoserver/wms">SARIG WMS</a></td>
+                        <td class="wfs-cell"><a href="https://sarigdata.pir.sa.gov.au/nvcl/geoserver/wfs">SARIG WFS</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Petroleum Tenements</td>
+                        <td class="metadata-cell"><a href="https://data.sa.gov.au/data/dataset/sarig-map-layers-petroleum-tenements">Petroleum Tenements</a></td>
+                        <td class="wms-cell"><a href="https://services.sarig.sa.gov.au/vector/petroleum_tenements/wms">Petroleum WMS</a></td>
+                        <td class="wfs-cell"><a href="https://services.sarig.sa.gov.au/vector/petroleum_tenements/wfs">Petroleum WFS</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Geothermal Tenements</td>
+                        <td class="metadata-cell"><a href="https://data.sa.gov.au/data/dataset/mineral-drillholes-petroleum-and-geothermal-wells">Geothermal Tenements</a></td>
+                        <td class="wms-cell"><a href="https://services.sarig.sa.gov.au/vector/geothermal_tenements/wms">Geothermal WMS</a></td>
+                        <td class="wfs-cell"><a href="https://services.sarig.sa.gov.au/vector/geothermal_tenements/wfs">Geothermal WFS</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Drillholes & Wells</td>
+                        <td class="metadata-cell"><a href="https://data.sa.gov.au/data/dataset/mineral-drillholes-petroleum-and-geothermal-wells">Drillholes Metadata</a></td>
+                        <td class="wms-cell"><a href="https://services.sarig.sa.gov.au/vector/drillholes/wms">Drillholes WMS</a></td>
+                        <td class="wfs-cell"><a href="https://services.sarig.sa.gov.au/vector/drillholes/wfs">Drillholes WFS</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Geophysical Surveys</td>
+                        <td class="metadata-cell"><a href="https://www.geoscience.gov.au/web-services">Geophysical Metadata</a></td>
+                        <td class="wms-cell"><a href="https://services.sarig.sa.gov.au/vector/geophysical_data/wms">Geophysical WMS</a></td>
+                        <td class="wfs-cell"><a href="https://services.sarig.sa.gov.au/vector/geophysical_data/wfs">Geophysical WFS</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Mineral Sampling Sites</td>
+                        <td class="metadata-cell"><a href="https://www.geoscience.gov.au/web-services">Sampling Metadata</a></td>
+                        <td class="wms-cell"><a href="https://services.sarig.sa.gov.au/vector/sampling_analyses/wms">Sampling WMS</a></td>
+                        <td class="wfs-cell"><a href="https://services.sarig.sa.gov.au/vector/sampling_analyses/wfs">Sampling WFS</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Geological Structural Features</td>
+                        <td class="metadata-cell"><a href="https://www.geoscience.gov.au/web-services">Geological Structures</a></td>
+                        <td class="wms-cell"><a href="https://services.sarig.sa.gov.au/vector/geology/wms">Geology WMS</a></td>
+                        <td class="wfs-cell"><a href="https://services.sarig.sa.gov.au/vector/geology/wfs">Geology WFS</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <!-- Hazards -->
+                    <tr>
+                        <td class="theme-cell">Hazards</td>
+                        <td class="layer-cell">Bushfire History</td>
+                        <td class="metadata-cell"><a href="https://www.cfs.sa.gov.au/home/">CFS</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Flood Studies</td>
+                        <td class="metadata-cell"><a href="https://data.sa.gov.au/">Flood Studies SA</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <!-- Transport -->
+                    <tr>
+                        <td class="theme-cell">Transport</td>
+                        <td class="layer-cell">Road Network</td>
+                        <td class="metadata-cell"><a href="https://data.sa.gov.au/">Road Network SA</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Railway Network</td>
+                        <td class="metadata-cell"><a href="https://data.sa.gov.au/">Railway Network SA</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <!-- Utilities -->
+                    <tr>
+                        <td class="theme-cell">Utilities</td>
+                        <td class="layer-cell">Electricity Infrastructure</td>
+                        <td class="metadata-cell"><a href="https://data.sa.gov.au/">Electricity Infrastructure SA</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Water Infrastructure</td>
+                        <td class="metadata-cell"><a href="https://data.sa.gov.au/">Water Infrastructure SA</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html></td>
+                        <td class="download-cell"><a href="https://data.sa.gov.au/">Data.SA Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Threatened Species (NatureMaps)</td>
+                        <td class="metadata-cell"><a href="https://data.environment.sa.gov.au/NatureMaps/Pages/default.aspx">NatureMaps Species</a></td>
+                        <td class="wms-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a></td>
+                        <td class="wfs-cell"><a href="https://location.sa.gov.au/viewer/">LocationSA Viewer</a>

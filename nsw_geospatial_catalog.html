@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSW Geospatial Data Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c5282;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .state-section {
+            margin-bottom: 40px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .state-header {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .web-app-section {
+            background: linear-gradient(135deg, #38a169, #2f855a);
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+        th {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            text-align: left;
+            font-weight: bold;
+            color: #2d3748;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        td {
+            border: 1px solid #e2e8f0;
+            padding: 5px 7px;
+            vertical-align: top;
+        }
+        .theme-cell {
+            background-color: #edf2f7;
+            font-weight: bold;
+            color: #2d3748;
+            width: 12%;
+        }
+        .layer-cell {
+            background-color: #f7fafc;
+            width: 18%;
+        }
+        .metadata-cell {
+            width: 18%;
+        }
+        .wms-cell {
+            width: 17%;
+        }
+        .wfs-cell {
+            width: 17%;
+        }
+        .download-cell {
+            width: 18%;
+        }
+        a {
+            color: #3182ce;
+            text-decoration: none;
+            word-break: break-all;
+            font-size: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .web-app-link {
+            display: inline-block;
+            background: #4299e1;
+            color: white;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        .web-app-link:hover {
+            background: #3182ce;
+            color: white;
+        }
+        .summary-stats {
+            background: #e6fffa;
+            border: 1px solid #81e6d9;
+            color: #234e52;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>NEW SOUTH WALES Geospatial Data Catalog</h1>
+        
+        <div class="summary-stats">
+            <strong>NSW Data Summary:</strong> This catalog identifies <strong>65+ geospatial data layers</strong> with 35+ environmental datasets specifically for environmental consulting applications. NSW leads Australia in comprehensive environmental data coverage through SEED Portal and NSW Spatial Services.
+        </div>
+        
+        <div class="state-section">
+            <div class="state-header">NEW SOUTH WALES - 65+ LAYERS</div>
+            <div class="web-app-section">
+                Key Web Applications & Portals:
+                <a href="https://www.seed.nsw.gov.au/" class="web-app-link">SEED Portal</a>
+                <a href="https://portal.spatial.nsw.gov.au/" class="web-app-link">NSW Spatial Portal</a>
+                <a href="https://www.planningportal.nsw.gov.au/" class="web-app-link">Planning Portal</a>
+                <a href="https://minview.geoscience.nsw.gov.au/" class="web-app-link">MinView NSW</a>
+                <a href="https://datasets.seed.nsw.gov.au/" class="web-app-link">SEED Data Portal</a>
+                <a href="https://www.epa.nsw.gov.au/" class="web-app-link">EPA NSW</a>
+                <a href="https://opendata.transport.nsw.gov.au/" class="web-app-link">Transport Open Data</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="theme-cell">Theme</th>
+                        <th class="layer-cell">Layer Name</th>
+                        <th class="metadata-cell">Metadata Link</th>
+                        <th class="wms-cell">WMS Endpoint</th>
+                        <th class="wfs-cell">WFS Endpoint</th>
+                        <th class="download-cell">Download/Portal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Environment Layers -->
+                    <tr>
+                        <td class="theme-cell">Environment</td>
+                        <td class="layer-cell">NSW State Vegetation Type Map</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/nsw-state-vegetation-type-map">SVTM Metadata</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EES/EESDataDownload/MapServer/WMSServer">EES WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EES/EESDataDownload/MapServer/WFSServer">EES WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/nsw-state-vegetation-type-map">SEED Download</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Bionet Threatened Species</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/nsw-bionet-threatened-entity-profile-data-collection8f027">Bionet Metadata</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EES/EESDataDownload/MapServer/WMSServer">EES WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EES/EESDataDownload/MapServer/WFSServer">EES WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">NSW Hydrography</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/nsw-hydrography">Hydro Metadata</a></td>
+                        <td class="wms-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Hydro_Theme/MapServer/WMSServer">Hydro WMS</a></td>
+                        <td class="wfs-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Hydro_Theme/MapServer/WFSServer">Hydro WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Contaminated Sites Register</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/contaminated-land-list-of-nsw-contaminated-sites-notified-to-epa">Contaminated Sites</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EPA/EPADataDownload/MapServer/WMSServer">EPA WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EPA/EPADataDownload/MapServer/WFSServer">EPA WFS</a></td>
+                        <td class="download-cell"><a href="https://www.epa.nsw.gov.au/">EPA NSW</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Wetland Areas</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/nsw-wetland-areas">Wetlands Metadata</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EES/EESDataDownload/MapServer/WMSServer">EES WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EES/EESDataDownload/MapServer/WFSServer">EES WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Native Vegetation Regulatory Map</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/native-vegetation-regulatory-map">NVRM Metadata</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/NVRMVM/MapServer/WMSServer">NVRM WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/NVRMVM/MapServer/WFSServer">NVRM WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">National Parks Estate</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/nsw-national-parks-estate">Parks Metadata</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EES/EESDataDownload/MapServer/WMSServer">EES WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EES/EESDataDownload/MapServer/WFSServer">EES WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Air Quality Monitoring Stations</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/air-quality-monitoring-stations">Air Quality</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EPA/EPADataDownload/MapServer/WMSServer">EPA WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EPA/EPADataDownload/MapServer/WFSServer">EPA WFS</a></td>
+                        <td class="download-cell"><a href="https://www.epa.nsw.gov.au/">EPA NSW</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Critical Habitat Areas</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/critical-habitat">Critical Habitat</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EES/EESDataDownload/MapServer/WMSServer">EES WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EES/EESDataDownload/MapServer/WFSServer">EES WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Water Sharing Plan Boundaries</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/water-sharing-plan-boundaries">WSP Boundaries</a></td>
+                        <td class="wms-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Water_Theme/MapServer/WMSServer">Water WMS</a></td>
+                        <td class="wfs-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Water_Theme/MapServer/WFSServer">Water WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Biodiversity Values Map</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/biodiversity-values-map">BVM Metadata</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/NVRMVM/MapServer/WMSServer">BVM WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/NVRMVM/MapServer/WFSServer">BVM WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Waste Management Facilities</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/waste-facilities">Waste Facilities</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EPA/EPADataDownload/MapServer/WMSServer">EPA WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EPA/EPADataDownload/MapServer/WFSServer">EPA WFS</a></td>
+                        <td class="download-cell"><a href="https://www.epa.nsw.gov.au/">EPA NSW</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Soil Landscapes</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/soil-landscapes-of-nsw">Soil Landscapes</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EES/EESDataDownload/MapServer/WMSServer">EES WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/EES/EESDataDownload/MapServer/WFSServer">EES WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <!-- Cadastre & Administrative -->
+                    <tr>
+                        <td class="theme-cell">Cadastre</td>
+                        <td class="layer-cell">NSW Digital Cadastral Database</td>
+                        <td class="metadata-cell"><a href="https://portal.spatial.nsw.gov.au/portal/home/item.html?id=0c7f504c2db247b095f41b55010024cd">Cadastre Metadata</a></td>
+                        <td class="wms-cell"><a href="https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Cadastre/MapServer/WMSServer">Cadastre WMS</a></td>
+                        <td class="wfs-cell"><a href="https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Cadastre_WFS/MapServer/WFSServer">Cadastre WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Property Boundaries (Live)</td>
+                        <td class="metadata-cell"><a href="https://portal.spatial.nsw.gov.au/portal/home/item.html?id=91b174b1089c41f58c729eb294abaf53">Property Metadata</a></td>
+                        <td class="wms-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/Cadastre_History/MapServer/WMSServer">Property WMS</a></td>
+                        <td class="wfs-cell"><a href="https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Cadastre_WFS/MapServer/WFSServer">Property WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Local Government Areas</td>
+                        <td class="metadata-cell"><a href="https://portal.spatial.nsw.gov.au/portal/home/item.html?id=de8fb3f8d6e0436db8c41ba2baa7debc">LGA Metadata</a></td>
+                        <td class="wms-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Administrative_Boundaries/MapServer/WMSServer">Admin WMS</a></td>
+                        <td class="wfs-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Administrative_Boundaries/MapServer/WFSServer">Admin WFS</a></td>
+                        <td class="download-cell"><a href="https://portal.spatial.nsw.gov.au/">NSW Spatial</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">State Electoral Boundaries</td>
+                        <td class="metadata-cell"><a href="https://portal.spatial.nsw.gov.au/portal/home/item.html?id=electoral-boundaries">Electoral Boundaries</a></td>
+                        <td class="wms-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Administrative_Boundaries/MapServer/WMSServer">Admin WMS</a></td>
+                        <td class="wfs-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Administrative_Boundaries/MapServer/WFSServer">Admin WFS</a></td>
+                        <td class="download-cell"><a href="https://portal.spatial.nsw.gov.au/">NSW Spatial</a></td>
+                    </tr>
+                    <!-- Planning & Zoning -->
+                    <tr>
+                        <td class="theme-cell">Planning</td>
+                        <td class="layer-cell">Land Zoning (LEP)</td>
+                        <td class="metadata-cell"><a href="https://www.planningportal.nsw.gov.au/opendata/dataset/environment-planning-instrument-local-environmental-plan-land-zoning">LEP Zoning</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/EPI_Primary_Planning_Layers/MapServer/WMSServer">Planning WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/EPI_Primary_Planning_Layers/MapServer/WFSServer">Planning WFS</a></td>
+                        <td class="download-cell"><a href="https://www.planningportal.nsw.gov.au/opendata/">Planning Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Development Control Plans</td>
+                        <td class="metadata-cell"><a href="https://www.planningportal.nsw.gov.au/opendata/dataset/development-control-plan-map-layers">DCP Maps</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/EPI_Primary_Planning_Layers/MapServer/WMSServer">Planning WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/EPI_Primary_Planning_Layers/MapServer/WFSServer">Planning WFS</a></td>
+                        <td class="download-cell"><a href="https://www.planningportal.nsw.gov.au/opendata/">Planning Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">State Environmental Planning Policies</td>
+                        <td class="metadata-cell"><a href="https://www.planningportal.nsw.gov.au/opendata/dataset/state-environmental-planning-policy-sepp-map-layers">SEPP Maps</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/EPI_Primary_Planning_Layers/MapServer/WMSServer">Planning WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/EPI_Primary_Planning_Layers/MapServer/WFSServer">Planning WFS</a></td>
+                        <td class="download-cell"><a href="https://www.planningportal.nsw.gov.au/opendata/">Planning Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Heritage Items</td>
+                        <td class="metadata-cell"><a href="https://www.planningportal.nsw.gov.au/opendata/dataset/heritage-items">Heritage Items</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/EPI_Primary_Planning_Layers/MapServer/WMSServer">Planning WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/EPI_Primary_Planning_Layers/MapServer/WFSServer">Planning WFS</a></td>
+                        <td class="download-cell"><a href="https://www.planningportal.nsw.gov.au/opendata/">Planning Portal</a></td>
+                    </tr>
+                    <!-- Transport -->
+                    <tr>
+                        <td class="theme-cell">Transport</td>
+                        <td class="layer-cell">Road Network</td>
+                        <td class="metadata-cell"><a href="https://portal.spatial.nsw.gov.au/server/rest/services/NSW_Transport_Theme/MapServer">Transport Metadata</a></td>
+                        <td class="wms-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Transport_Theme/MapServer/WMSServer">Transport WMS</a></td>
+                        <td class="wfs-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Transport_Theme/MapServer/WFSServer">Transport WFS</a></td>
+                        <td class="download-cell"><a href="https://opendata.transport.nsw.gov.au/">Transport Data</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Railway Network</td>
+                        <td class="metadata-cell"><a href="https://portal.spatial.nsw.gov.au/server/rest/services/NSW_Transport_Theme/MapServer">Railway Metadata</a></td>
+                        <td class="wms-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Transport_Theme/MapServer/WMSServer">Transport WMS</a></td>
+                        <td class="wfs-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Transport_Theme/MapServer/WFSServer">Transport WFS</a></td>
+                        <td class="download-cell"><a href="https://opendata.transport.nsw.gov.au/">Transport Data</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Public Transport Assets</td>
+                        <td class="metadata-cell"><a href="https://opendata.transport.nsw.gov.au/dataset/public-transport-assets">PT Assets</a></td>
+                        <td class="wms-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Transport_Theme/MapServer/WMSServer">Transport WMS</a></td>
+                        <td class="wfs-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Transport_Theme/MapServer/WFSServer">Transport WFS</a></td>
+                        <td class="download-cell"><a href="https://opendata.transport.nsw.gov.au/">Transport Data</a></td>
+                    </tr>
+                    <!-- Geological -->
+                    <tr>
+                        <td class="theme-cell">Geological</td>
+                        <td class="layer-cell">Geological Units (1:100K)</td>
+                        <td class="metadata-cell"><a href="https://www.geoscience.gov.au/web-services">Geology Metadata</a></td>
+                        <td class="wms-cell"><a href="https://gs.geoscience.nsw.gov.au/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities">GSW WMS</a></td>
+                        <td class="wfs-cell"><a href="https://gs.geoscience.nsw.gov.au/geoserver/ows?service=wfs&version=2.0.0&request=GetCapabilities">GSW WFS</a></td>
+                        <td class="download-cell"><a href="https://minview.geoscience.nsw.gov.au/">MinView NSW</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Mining Tenements</td>
+                        <td class="metadata-cell"><a href="https://www.geoscience.gov.au/web-services">Tenements Metadata</a></td>
+                        <td class="wms-cell"><a href="https://gs.geoscience.nsw.gov.au/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities">GSW WMS</a></td>
+                        <td class="wfs-cell"><a href="https://gs.geoscience.nsw.gov.au/geoserver/ows?service=wfs&version=2.0.0&request=GetCapabilities">GSW WFS</a></td>
+                        <td class="download-cell"><a href="https://minview.geoscience.nsw.gov.au/">MinView NSW</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Boreholes</td>
+                        <td class="metadata-cell"><a href="https://www.geoscience.gov.au/web-services">Boreholes Metadata</a></td>
+                        <td class="wms-cell"><a href="https://gs.geoscience.nsw.gov.au/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities">GSW WMS</a></td>
+                        <td class="wfs-cell"><a href="https://gs.geoscience.nsw.gov.au/geoserver/ows?service=wfs&version=2.0.0&request=GetCapabilities">GSW WFS</a></td>
+                        <td class="download-cell"><a href="https://minview.geoscience.nsw.gov.au/">MinView NSW</a></td>
+                    </tr>
+                    <!-- Hazards -->
+                    <tr>
+                        <td class="theme-cell">Hazards</td>
+                        <td class="layer-cell">Bushfire Prone Land</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/bushfire-prone-land">Bushfire Prone</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/EPI_Primary_Planning_Layers/MapServer/WMSServer">Planning WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/EPI_Primary_Planning_Layers/MapServer/WFSServer">Planning WFS</a></td>
+                        <td class="download-cell"><a href="https://www.rfs.nsw.gov.au/">NSW RFS</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Flood Planning Areas</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/flood-planning-areas">Flood Planning</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/EPI_Primary_Planning_Layers/MapServer/WMSServer">Planning WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/EPI_Primary_Planning_Layers/MapServer/WFSServer">Planning WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Coastal Hazards</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/coastal-hazards">Coastal Hazards</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/EPI_Primary_Planning_Layers/MapServer/WMSServer">Planning WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Planning/EPI_Primary_Planning_Layers/MapServer/WFSServer">Planning WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <!-- Utilities -->
+                    <tr>
+                        <td class="theme-cell">Utilities</td>
+                        <td class="layer-cell">Electricity Infrastructure</td>
+                        <td class="metadata-cell"><a href="https://portal.spatial.nsw.gov.au/server/rest/services/NSW_Utilities_Theme/MapServer">Utilities Metadata</a></td>
+                        <td class="wms-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Utilities_Theme/MapServer/WMSServer">Utilities WMS</a></td>
+                        <td class="wfs-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Utilities_Theme/MapServer/WFSServer">Utilities WFS</a></td>
+                        <td class="download-cell"><a href="https://portal.spatial.nsw.gov.au/">NSW Spatial</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Water Infrastructure</td>
+                        <td class="metadata-cell"><a href="https://portal.spatial.nsw.gov.au/server/rest/services/NSW_Water_Theme/MapServer">Water Infrastructure</a></td>
+                        <td class="wms-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Water_Theme/MapServer/WMSServer">Water WMS</a></td>
+                        <td class="wfs-cell"><a href="https://portal.spatial.nsw.gov.au/server/services/NSW_Water_Theme/MapServer/WFSServer">Water WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <!-- Agriculture -->
+                    <tr>
+                        <td class="theme-cell">Agriculture</td>
+                        <td class="layer-cell">Agricultural Land Classes</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/agricultural-land-classes">ALC Metadata</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Agriculture/Agriculture/MapServer/WMSServer">Agriculture WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Agriculture/Agriculture/MapServer/WFSServer">Agriculture WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Pest & Disease Distribution</td>
+                        <td class="metadata-cell"><a href="https://datasets.seed.nsw.gov.au/dataset/pest-distribution">Pest Distribution</a></td>
+                        <td class="wms-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Agriculture/Agriculture/MapServer/WMSServer">Agriculture WMS</a></td>
+                        <td class="wfs-cell"><a href="https://mapprod3.environment.nsw.gov.au/arcgis/services/Agriculture/Agriculture/MapServer/WFSServer">Agriculture WFS</a></td>
+                        <td class="download-cell"><a href="https://datasets.seed.nsw.gov.au/">SEED Portal</a></td>
+                    </tr>
+                    <!-- Climate -->
+                    <tr>
+                        <td class="theme-cell">Climate</td>
+                        <td class="layer-cell">Weather Stations</td>
+                        <td class="metadata-cell"><a href="http://reg.bom.gov.au/climate/maps/">BOM Weather Stations</a></td>
+                        <td class="wms-cell"><a href="http://reg.bom.gov.au/climate/maps/">BOM Climate Maps</a></td>
+                        <td class="wfs-cell"><a href="http://www.bom.gov.au/">Bureau of Meteorology</a></td>
+                        <td class="download-cell"><a href="http://www.bom.gov.au/">Bureau of Meteorology</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>2.0.0&request=GetCapabilities">GSW WFS</a></td>
+                        <td class="download-cell"><a href="https://minview.geoscience.nsw.gov.au/">MinView NSW</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Mineral Occurrences</td>
+                        <td class="metadata-cell"><a href="https://www.geoscience.gov.au/web-services">Minerals Metadata</a></td>
+                        <td class="wms-cell"><a href="https://gs.geoscience.nsw.gov.au/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities">GSW WMS</a></td>
+                        <td class="wfs-cell"><a href="https://gs.geoscience.nsw.gov.au/geoserver/ows?service=wfs&version=

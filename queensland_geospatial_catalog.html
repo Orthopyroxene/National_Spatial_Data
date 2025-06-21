@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queensland Geospatial Data Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c5282;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .state-section {
+            margin-bottom: 40px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .state-header {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .web-app-section {
+            background: linear-gradient(135deg, #38a169, #2f855a);
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+        th {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            text-align: left;
+            font-weight: bold;
+            color: #2d3748;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        td {
+            border: 1px solid #e2e8f0;
+            padding: 5px 7px;
+            vertical-align: top;
+        }
+        .theme-cell {
+            background-color: #edf2f7;
+            font-weight: bold;
+            color: #2d3748;
+            width: 12%;
+        }
+        .layer-cell {
+            background-color: #f7fafc;
+            width: 18%;
+        }
+        .metadata-cell {
+            width: 18%;
+        }
+        .wms-cell {
+            width: 17%;
+        }
+        .wfs-cell {
+            width: 17%;
+        }
+        .download-cell {
+            width: 18%;
+        }
+        a {
+            color: #3182ce;
+            text-decoration: none;
+            word-break: break-all;
+            font-size: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .web-app-link {
+            display: inline-block;
+            background: #4299e1;
+            color: white;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        .web-app-link:hover {
+            background: #3182ce;
+            color: white;
+        }
+        .summary-stats {
+            background: #e6fffa;
+            border: 1px solid #81e6d9;
+            color: #234e52;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QUEENSLAND Geospatial Data Catalog</h1>
+        
+        <div class="summary-stats">
+            <strong>Queensland Data Summary:</strong> This catalog identifies <strong>58+ geospatial data layers</strong> with 32+ environmental datasets. Queensland excels in geological and mining data through GSQ Portal and comprehensive ecosystem mapping through Regional Ecosystems and WildNet databases.
+        </div>
+        
+        <div class="state-section">
+            <div class="state-header">QUEENSLAND - 58+ LAYERS</div>
+            <div class="web-app-section">
+                Key Web Applications & Portals:
+                <a href="https://www.data.qld.gov.au/" class="web-app-link">QLD Open Data</a>
+                <a href="https://www.business.qld.gov.au/running-business/support-services/mapping-data-imagery/data/qspatial" class="web-app-link">QSpatial</a>
+                <a href="https://qldglobe.information.qld.gov.au/" class="web-app-link">Queensland Globe</a>
+                <a href="https://www.business.qld.gov.au/industries/mining-energy-water/resources/minerals-coal/online-services/gsq-open-data-portal" class="web-app-link">GSQ Portal</a>
+                <a href="https://www.qld.gov.au/environment/plants-animals/species-information/wildnet" class="web-app-link">WildNet</a>
+                <a href="https://apps.des.qld.gov.au/air-quality/" class="web-app-link">Air Quality Portal</a>
+                <a href="http://qldspatial.information.qld.gov.au/catalogue/custom/index.page" class="web-app-link">QSpatial Catalogue</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="theme-cell">Theme</th>
+                        <th class="layer-cell">Layer Name</th>
+                        <th class="metadata-cell">Metadata Link</th>
+                        <th class="wms-cell">WMS Endpoint</th>
+                        <th class="wfs-cell">WFS Endpoint</th>
+                        <th class="download-cell">Download/Portal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Environment Layers -->
+                    <tr>
+                        <td class="theme-cell">Environment</td>
+                        <td class="layer-cell">Regional Ecosystems (Current)</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/regional-ecosystems-queensland-series">RE Current</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WMSServer">ENV WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WFSServer">ENV WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Contaminated Land Register</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/contaminated-land-register-queensland">CLR Metadata</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WMSServer">ENV WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WFSServer">ENV WFS</a></td>
+                        <td class="download-cell"><a href="https://www.qld.gov.au/environment/management/environmental/contaminated-land/registers/search-registers">CLR Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Air Quality Monitoring</td>
+                        <td class="metadata-cell"><a href="https://apps.des.qld.gov.au/air-quality/">Air Quality</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WMSServer">ENV WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WFSServer">ENV WFS</a></td>
+                        <td class="download-cell"><a href="https://apps.des.qld.gov.au/air-quality/">Air Quality Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Koala Habitat Areas</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/koala-habitat-area-queensland-series">Koala Habitat</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WMSServer">ENV WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WFSServer">ENV WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Fish Habitat Areas</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/fish-habitat-area-queensland-series">Fish Habitat</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WMSServer">ENV WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WFSServer">ENV WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Great Barrier Reef Marine Park</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/great-barrier-reef-marine-park-boundary">GBRMP Boundary</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WMSServer">ENV WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WFSServer">ENV WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <!-- Cadastre -->
+                    <tr>
+                        <td class="theme-cell">Cadastre</td>
+                        <td class="layer-cell">Digital Cadastral Database</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/cadastral-data-queensland-series">QLD Cadastre</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Cadastre/CadastralParcels/MapServer/WMSServer">Cadastre WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Cadastre/CadastralParcels/MapServer/WFSServer">Cadastre WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/dataset/cadastral-data-queensland-series">QLD Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Property Boundaries</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/property-location-addresses-queensland-series">Property Addresses</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Cadastre/CadastralParcels/MapServer/WMSServer">Cadastre WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Cadastre/CadastralParcels/MapServer/WFSServer">Cadastre WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Data Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Local Government Areas</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/local-government-area-boundaries-queensland">LGA Boundaries</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/PlanningCadastre/StatutoryLand/MapServer/WMSServer">Planning WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/PlanningCadastre/StatutoryLand/MapServer/WFSServer">Planning WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <!-- Planning -->
+                    <tr>
+                        <td class="theme-cell">Planning</td>
+                        <td class="layer-cell">Planning Zones</td>
+                        <td class="metadata-cell"><a href="https://www.planning.qld.gov.au/planning-framework/mapping">QLD Planning</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/PlanningCadastre/StatutoryLand/MapServer/WMSServer">Planning WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/PlanningCadastre/StatutoryLand/MapServer/WFSServer">Planning WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Local Planning Instruments</td>
+                        <td class="metadata-cell"><a href="https://www.planning.qld.gov.au/planning-framework/mapping">LPI Metadata</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/PlanningCadastre/StatutoryLand/MapServer/WMSServer">Planning WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/PlanningCadastre/StatutoryLand/MapServer/WFSServer">Planning WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">State Planning Policy Areas</td>
+                        <td class="metadata-cell"><a href="https://www.planning.qld.gov.au/planning-framework/mapping">SPP Areas</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/PlanningCadastre/StatutoryLand/MapServer/WMSServer">Planning WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/PlanningCadastre/StatutoryLand/MapServer/WFSServer">Planning WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <!-- Geological (GSQ) -->
+                    <tr>
+                        <td class="theme-cell">Geological</td>
+                        <td class="layer-cell">Geological Units (1:100K)</td>
+                        <td class="metadata-cell"><a href="https://www.business.qld.gov.au/industries/mining-energy-water/resources/minerals-coal/online-services/gsq-open-data-portal">GSQ Geology</a></td>
+                        <td class="wms-cell"><a href="http://geology.information.qld.gov.au/geoserver/wms">GSQ WMS</a></td>
+                        <td class="wfs-cell"><a href="http://geology.information.qld.gov.au/geoserver/wfs">GSQ WFS</a></td>
+                        <td class="download-cell"><a href="https://www.business.qld.gov.au/running-business/support-services/mapping-data-imagery/data/qspatial">QSpatial</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Boreholes (GeoSciML)</td>
+                        <td class="metadata-cell"><a href="https://www.geoscience.gov.au/web-services">Boreholes Metadata</a></td>
+                        <td class="wms-cell"><a href="http://geology.information.qld.gov.au/geoserver/wms">GSQ WMS</a></td>
+                        <td class="wfs-cell"><a href="http://geology.information.qld.gov.au/geoserver/wfs">GSQ WFS</a></td>
+                        <td class="download-cell"><a href="https://www.business.qld.gov.au/running-business/support-services/mapping-data-imagery/data/qspatial">QSpatial</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Mining Tenements</td>
+                        <td class="metadata-cell"><a href="https://www.business.qld.gov.au/industries/mining-energy-water/resources/minerals-coal/online-services/gsq-open-data-portal">Mining Tenements</a></td>
+                        <td class="wms-cell"><a href="http://geology.information.qld.gov.au/geoserver/wms">GSQ WMS</a></td>
+                        <td class="wfs-cell"><a href="http://geology.information.qld.gov.au/geoserver/wfs">GSQ WFS</a></td>
+                        <td class="download-cell"><a href="https://www.business.qld.gov.au/running-business/support-services/mapping-data-imagery/data/qspatial">QSpatial</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Geophysical Surveys</td>
+                        <td class="metadata-cell"><a href="https://www.business.qld.gov.au/industries/mining-energy-water/resources/minerals-coal/online-services/gsq-open-data-portal">Geophysical Surveys</a></td>
+                        <td class="wms-cell"><a href="http://geology.information.qld.gov.au/geoserver/wms">GSQ WMS</a></td>
+                        <td class="wfs-cell"><a href="http://geology.information.qld.gov.au/geoserver/wfs">GSQ WFS</a></td>
+                        <td class="download-cell"><a href="https://www.business.qld.gov.au/running-business/support-services/mapping-data-imagery/data/qspatial">QSpatial</a></td>
+                    </tr>
+                    <!-- Hazards -->
+                    <tr>
+                        <td class="theme-cell">Hazards</td>
+                        <td class="layer-cell">Bushfire Prone Areas</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/bushfire-prone-area-queensland-series">Bushfire Prone</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Hazards/Hazards/MapServer/WMSServer">Hazards WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Hazards/Hazards/MapServer/WFSServer">Hazards WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/dataset/bushfire-prone-area-queensland-series">Download Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Current Bushfire Incidents</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/queensland-fire-and-rescue-current-bushfire-incidents">Fire Incidents</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Hazards/Hazards/MapServer/WMSServer">Hazards WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Hazards/Hazards/MapServer/WFSServer">Hazards WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/dataset/queensland-fire-and-rescue-current-bushfire-incidents/resource/0b2a4ad3-e82b-4096-b800-7c3ebcdd0078">JSON Download</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Flood Studies</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/flood-studies-queensland">Flood Studies</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Hazards/Hazards/MapServer/WMSServer">Hazards WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Hazards/Hazards/MapServer/WFSServer">Hazards WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <!-- Agriculture -->
+                    <tr>
+                        <td class="theme-cell">Agriculture</td>
+                        <td class="layer-cell">Pest Distribution</td>
+                        <td class="metadata-cell"><a href="https://www.daf.qld.gov.au/business-priorities/biosecurity/invasive-plants-animals/pest-mapping/distribution-maps">Pest Mapping</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Agriculture/Agriculture/MapServer/WMSServer">Agriculture WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Agriculture/Agriculture/MapServer/WFSServer">Agriculture WFS</a></td>
+                        <td class="download-cell"><a href="https://qfish.fisheries.qld.gov.au/">QFish Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Agricultural Land Class</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/agricultural-land-class-mapping-queensland-series">ALC Mapping</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Agriculture/Agriculture/MapServer/WMSServer">Agriculture WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Agriculture/Agriculture/MapServer/WFSServer">Agriculture WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Good Quality Agricultural Land</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/good-quality-agricultural-land-queensland-series">GQAL Mapping</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Agriculture/Agriculture/MapServer/WMSServer">Agriculture WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Agriculture/Agriculture/MapServer/WFSServer">Agriculture WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <!-- Transport -->
+                    <tr>
+                        <td class="theme-cell">Transport</td>
+                        <td class="layer-cell">Road Network</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/queensland-roads">QLD Roads</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Transport/TransportAssets/MapServer/WMSServer">Transport WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Transport/TransportAssets/MapServer/WFSServer">Transport WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Railway Network</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/railway-network-queensland">QLD Railway</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Transport/TransportAssets/MapServer/WMSServer">Transport WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Transport/TransportAssets/MapServer/WFSServer">Transport WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>ld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Regional Ecosystems (Pre-clearing)</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/regional-ecosystems-pre-clearing-queensland-series">RE Pre-clearing</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WMSServer">ENV WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WFSServer">ENV WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">WildNet Species Records</td>
+                        <td class="metadata-cell"><a href="https://www.qld.gov.au/environment/plants-animals/species-information/wildnet">WildNet Metadata</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WMSServer">ENV WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WFSServer">ENV WFS</a></td>
+                        <td class="download-cell"><a href="https://www.qld.gov.au/environment/plants-animals/species-information/wildnet">WildNet Portal</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Essential Habitat</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/essential-habitat-queensland-series">Essential Habitat</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WMSServer">ENV WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WFSServer">ENV WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Wetland Systems</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/wetland-systems-queensland-series">Wetlands Metadata</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WMSServer">ENV WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WFSServer">ENV WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Protected Areas</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/protected-areas-of-queensland">Protected Areas</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WMSServer">ENV WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WFSServer">ENV WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.qld.gov.au/">QLD Open Data</a></td>
+                    </tr>
+                    <tr>
+                        <td class="theme-cell"></td>
+                        <td class="layer-cell">Environmentally Sensitive Areas</td>
+                        <td class="metadata-cell"><a href="https://www.data.qld.gov.au/dataset/environmentally-sensitive-area-trigger-map-queensland-series">ESA Metadata</a></td>
+                        <td class="wms-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WMSServer">ENV WMS</a></td>
+                        <td class="wfs-cell"><a href="https://spatial-gis.information.qld.gov.au/arcgis/services/Environment/EnvironmentalResourcesExtraction/MapServer/WFSServer">ENV WFS</a></td>
+                        <td class="download-cell"><a href="https://www.data.q
