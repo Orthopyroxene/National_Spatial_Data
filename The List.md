@@ -59,6 +59,26 @@ Australia's premier geoscience agency operates the most extensive federal ArcGIS
 ### Australian Bureau of Statistics
 ABS provides ArcGIS RESTful services for all Australian Statistical Geography Standard (ASGS) boundaries including Local Government Areas, Statistical Areas, and Australia Boundary layers.
 
+**ASGS 2021 Statistical Areas Level 1**
+- URL: https://geo.abs.gov.au/arcgis/rest/services/ASGS2021/SA1/MapServer
+- Description: Smallest geographic unit for Census data release with populations between 200-800 people
+
+**ASGS 2021 Statistical Areas Level 2**
+- URL: https://geo.abs.gov.au/arcgis/rest/services/ASGS2021/SA2/MapServer
+- Description: Medium-sized general purpose areas representing communities with populations between 3,000-25,000
+
+**ASGS 2021 Suburbs and Localities**
+- URL: https://geo.abs.gov.au/arcgis/rest/services/ASGS2021/SAL/MapServer
+- Description: Suburbs and localities (gazetted localities) representing officially designated boundaries
+
+**ASGS 2024 Local Government Areas**
+- URL: https://geo.abs.gov.au/arcgis/rest/services/ASGS2024/LGA/MapServer
+- Description: ABS Mesh Block representation of gazetted local government boundaries
+
+**ASGS 2024 Commonwealth Electoral Divisions**
+- URL: https://geo.abs.gov.au/arcgis/rest/services/ASGS2024/CED/MapServer
+- Description: Federal electoral division boundaries for House of Representatives elections
+
 ## New South Wales Services
 
 ### NSW Spatial Services
@@ -100,6 +120,15 @@ NSW Spatial Services operates comprehensive foundational spatial data services c
 **Sydney Drinking Water Catchment**
 - URL: https://mapprod3.environment.nsw.gov.au/arcgis/rest/services/EDP/Sydney_Drinking_Water_Catchment_Boundary/MapServer
 - Description: Greater Sydney Declared Catchment and Water Supply System boundaries
+
+**DPIE Offices Infrastructure**
+- URL: https://mapprod1.environment.nsw.gov.au/arcgis/rest/services/Infrastructure/DPIE_Offices/MapServer
+- Description: Department of Planning, Industry and Environment office locations and infrastructure
+
+### NSW Emergency Services
+**NSW Floods 2021 Rapid Response Imagery**
+- URL: https://portal.spatial.nsw.gov.au/server/rest/services/Floods_2021/MapServer
+- Description: Rapid response imagery for flood-affected areas, ortho-rectified imagery for emergency management decision making during 2021 floods
 
 ### WaterNSW
 **Greater Sydney Water Supply System**
@@ -152,6 +181,15 @@ Victoria operates an extensive Mapshare platform providing comprehensive state s
 - URL: https://services.land.vic.gov.au/arcgis/rest/services/Planning/VicPlan_Transport/MapServer
 - Description: Transport networks including rail, bicycle, and public transport infrastructure
 
+**Melbourne Airport Master Plan 2022**
+- URL: https://plan-gis.mapshare.vic.gov.au/arcgis/rest/services/Planning/Melbourne_Airport_Master_Plan_2022_VicPlan/MapServer
+- Description: Melbourne Airport master planning data including noise contours and environs overlay
+
+### Victoria Water Services
+**Special Water Supply Catchment Areas**
+- URL: https://corp-gis.mapshare.vic.gov.au/arcgis/rest/services/Mapshare/WaterAndCatchment/MapServer
+- Description: Victoria's special water supply catchment areas and water management zones
+
 ## Queensland Services
 
 ### Queensland Spatial Information Services
@@ -188,6 +226,10 @@ Queensland provides centralized spatial services through the Department of Resou
 **Fisheries Service**
 - URL: https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Farming/Fisheries/MapServer
 - Description: Waterways, fish habitats, aquaculture development areas, fisheries resources, marine management
+
+**Groundwater Dependent Ecosystems**
+- URL: https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/GroundwaterDependentEcosystems/MapServer
+- Description: GDEs including aquifers, caves, lakes, palustrine wetlands, lacustrine wetlands, rivers and vegetation
 
 ## Western Australia Services
 
@@ -240,6 +282,11 @@ Tasmania provides spatial services through the comprehensive LIST platform.
 - URL: https://services.thelist.tas.gov.au/arcgis/rest/services/Basemaps/AerialPhoto2022/MapServer
 - Description: Tasmania State Orthophoto compilation (2021-2022 season)
 
+### Tasmania Emergency Services
+**Emergency Management Public**
+- URL: https://services.thelist.tas.gov.au/arcgis/rest/services/Public/EmergencyManagementPublic/MapServer
+- Description: TasAlert warnings for bushfire, flood, and other emergencies with alert levels
+
 ## South Australia Services
 
 ### South Australian Resources Information Gateway (SARIG)
@@ -272,6 +319,11 @@ Tasmania provides spatial services through the comprehensive LIST platform.
 **Water Infrastructure**
 - URL: https://spatial.sawater.com.au/arcgis/rest/services/Public/WaterInfrastructure/MapServer
 - Description: Water mains, wastewater networks, treatment plants, and service areas
+
+### Location SA
+**Street Map Cased No Parcels**
+- URL: https://location.sa.gov.au/arcgis/rest/services/BaseMaps/StreetMapCasedNoParcels_wmas/MapServer
+- Description: Street-based map with cased road symbology and no parcel boundaries
 
 ## Northern Territory Services
 
@@ -352,11 +404,11 @@ Tasmania provides spatial services through the comprehensive LIST platform.
 
 ### Transport Infrastructure
 **Foundation Rail Infrastructure**
-- URL: https://services.ga.gov.au/gis/rest/services/Foundation_Spatial_Data/Foundation_Rail_Infrastructure/MapServer
+- URL: https://services.ga.gov.au/gis/rest/services/Foundation_Rail_Infrastructure/MapServer
 - Description: National rail lines, rail sidings, tramlines, light rail, and railway stations
 
-**National Maritime Facilities**
-- URL: https://services.ga.gov.au/gis/rest/services/Marine_Offshore/National_Maritime_Facilities/MapServer
+**Maritime Facilities**
+- URL: https://services.ga.gov.au/gis/rest/services/Maritime_Facilities/MapServer
 - Description: Spatial locations of major ports and public ferry terminals across Australia
 
 ## Conclusion
