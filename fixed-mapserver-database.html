@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australian MapServer Layers Database</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8fafc;
+            color: #2d3748;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2b6cb0 0%, #3182ce 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(43, 108, 176, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #3182ce;
+            transition: transform 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #3182ce;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .controls {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        select, input {
+            padding: 10px 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s ease;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: #3182ce;
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+        }
+
+        .search-input {
+            grid-column: 1 / -1;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .export-btn {
+            background: linear-gradient(135deg, #38a169, #48bb78);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(56, 161, 105, 0.3);
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            min-width: 1200px;
+        }
+
+        th {
+            background: linear-gradient(135deg, #2b6cb0, #3182ce);
+            color: white;
+            padding: 15px 10px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: top;
+        }
+
+        tr:hover {
+            background: #f7fafc;
+        }
+
+        .jurisdiction-commonwealth { background-color: #e6fffa; }
+        .jurisdiction-nsw { background-color: #ebf8ff; }
+        .jurisdiction-vic { background-color: #f0fff4; }
+        .jurisdiction-qld { background-color: #fffaf0; }
+        .jurisdiction-sa { background-color: #fef5e7; }
+        .jurisdiction-wa { background-color: #f7fafc; }
+        .jurisdiction-tas { background-color: #edf2f7; }
+        .jurisdiction-nt { background-color: #faf5ff; }
+        .jurisdiction-act { background-color: #e6fffa; }
+
+        .mapserver-link {
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        .mapserver-link:hover {
+            text-decoration: underline;
+            color: #2c5282;
+        }
+
+        .layer-count {
+            background: #3182ce;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .layer-list {
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        .layer-item {
+            margin-bottom: 3px;
+            padding: 2px 4px;
+            background: #f8f9fa;
+            border-radius: 3px;
+            border-left: 3px solid #3182ce;
+        }
+
+        .layer-id {
+            color: #666;
+            font-size: 10px;
+        }
+
+        .status-online {
+            color: #38a169;
+            font-weight: 600;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .pagination button {
+            padding: 10px 15px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .pagination button.active {
+            background: #3182ce;
+            color: white;
+            border-color: #3182ce;
+        }
+
+        .pagination button:hover:not(.active) {
+            background: #f7fafc;
+            border-color: #cbd5e0;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .export-buttons {
+                flex-direction: column;
+            }
+            
+            table {
+                font-size: 11px;
+            }
+            
+            th, td {
+                padding: 8px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Australian MapServer Layers Database</h1>
+            <p>Comprehensive catalog of MapServer endpoints and their individual layers across Australian government agencies</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number" id="totalMapServers">0</span>
+                <span class="stat-label">Total MapServers</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="totalLayers">0</span>
+                <span class="stat-label">Total Layers</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="totalAgencies">0</span>
+                <span class="stat-label">Government Agencies</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="totalJurisdictions">0</span>
+                <span class="stat-label">Jurisdictions</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="filter-grid">
+                <div class="filter-group">
+                    <label for="jurisdictionFilter">Jurisdiction:</label>
+                    <select id="jurisdictionFilter">
+                        <option value="">All Jurisdictions</option>
+                        <option value="Commonwealth">Commonwealth</option>
+                        <option value="NSW">NSW</option>
+                        <option value="VIC">VIC</option>
+                        <option value="QLD">QLD</option>
+                        <option value="SA">SA</option>
+                        <option value="WA">WA</option>
+                        <option value="TAS">TAS</option>
+                        <option value="NT">NT</option>
+                        <option value="ACT">ACT</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="agencyFilter">Agency:</label>
+                    <select id="agencyFilter">
+                        <option value="">All Agencies</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="categoryFilter">Category:</label>
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="layerCountFilter">Minimum Layers:</label>
+                    <select id="layerCountFilter">
+                        <option value="0">Any</option>
+                        <option value="5">5+ Layers</option>
+                        <option value="10">10+ Layers</option>
+                        <option value="20">20+ Layers</option>
+                        <option value="50">50+ Layers</option>
+                    </select>
+                </div>
+
+                <div class="filter-group search-input">
+                    <label for="searchInput">Search MapServers or Layers:</label>
+                    <input type="text" id="searchInput" placeholder="Search by MapServer name, URL, or layer content...">
+                </div>
+            </div>
+
+            <div class="export-buttons">
+                <button class="export-btn" onclick="exportToCSV()">
+                    📊 Export CSV
+                </button>
+                <button class="export-btn" onclick="exportToExcel()">
+                    📋 Export Excel
+                </button>
+                <button class="export-btn" onclick="exportLayersList()">
+                    📄 Export Layers List
+                </button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="mapserverTable">
+                <thead>
+                    <tr>
+                        <th>MapServer Name</th>
+                        <th>Agency</th>
+                        <th>Jurisdiction</th>
+                        <th>Category</th>
+                        <th>MapServer URL</th>
+                        <th>Layer Count</th>
+                        <th>Layer Details</th>
+                        <th>Service Type</th>
+                        <th>Last Updated</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="mapserverTableBody">
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination" id="pagination">
+            <!-- Pagination buttons will be added by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Comprehensive dataset of Australian MapServer endpoints and their layers
+        const mapserverData = [
+            {
+                mapserverName: "SLIP Public Services - Boundaries",
+                agency: "Landgate/DMIRS",
+                jurisdiction: "WA",
+                category: "Boundaries",
+                mapserverUrl: "https://services.slip.wa.gov.au/public/rest/services/SLIP_Public_Services/Boundaries/MapServer",
+                layerCount: 15,
+                layers: [
+                    "Local Government Areas",
+                    "State Electoral Districts", 
+                    "Federal Electoral Districts",
+                    "Statistical Areas Level 1-4",
+                    "Postcode Areas",
+                    "Localities",
+                    "Suburbs",
+                    "Regional Boundaries",
+                    "Aboriginal Lands",
+                    "National Parks",
+                    "Marine Parks",
+                    "World Heritage Areas",
+                    "Ramsar Wetlands",
+                    "Heritage Places",
+                    "Planning Zones"
+                ],
+                serviceType: "ArcGIS REST",
+                lastUpdated: "2025-01-20",
+                status: "Online"
+            },
+            {
+                mapserverName: "SLIP Public Services - Soil Landscape",
+                agency: "Landgate/DMIRS",
+                jurisdiction: "WA",
+                category: "Environment",
+                mapserverUrl: "https://services.slip.wa.gov.au/public/rest/services/SLIP_Public_Services/Soil_Landscape/MapServer",
+                layerCount: 18,
+                layers: [
+                    "Soil landscape land quality - Flood Risk (DPIRD-007)",
+                    "Soil landscape land quality - Phosphorus Export Risk (DPIRD-010)",
+                    "Soil landscape land quality - Salinity Risk (DPIRD-009)",
+                    "Soil landscape land quality - Subsurface Acidification Risk (DPIRD-011)",
+                    "Soil landscape land quality - Subsurface Compaction Risk (DPIRD-012)",
+                    "Soil landscape land quality - Water Erosion Risk (DPIRD-013)",
+                    "Soil landscape land quality - Water Repellence Risk (DPIRD-014)",
+                    "Soil landscape land quality - Waterlogging Risk (DPIRD-015)",
+                    "Soil landscape land quality - Wind Erosion Risk (DPIRD-016)",
+                    "Soil landscape mapping - Zones (DPIRD-017)",
+                    "Soil Landscape Mapping - Best Available (DPIRD-027)",
+                    "Soil landscape land quality - Surface Acidity (current) (DPIRD-035)",
+                    "Soil landscape land quality - Subsurface Acidity (current) (DPIRD-036)",
+                    "Soil landscape land quality - Surface Alkalinity (current) (DPIRD-037)",
+                    "Soil landscape land quality - Subsurface Alkalinity (current) (DPIRD-038)",
+                    "Soil landscape land quality - Surface Salinity (current) (DPIRD-039)",
+                    "Soil landscape land quality - Physical Crop Rooting Depth (DPIRD-040)",
+                    "Soil landscape land quality - Soil Water Storage (DPIRD-041)"
+                ],
+                serviceType: "ArcGIS REST",
+                lastUpdated: "2025-01-17",
+                status: "Online"
+            },
+            {
+                mapserverName: "GA Surface Geology",
+                agency: "Geoscience Australia",
+                jurisdiction: "Commonwealth",
+                category: "Geology",
+                mapserverUrl: "https://services.ga.gov.au/gis/services/GA_Surface_Geology/MapServer",
+                layerCount: 8,
+                layers: [
+                    "Surface Geology 1:1M",
+                    "Surface Geology 1:2.5M",
+                    "Geological Provinces",
+                    "Chronostratigraphic Units",
+                    "Lithostratigraphic Units",
+                    "Metamorphic Events",
+                    "Structural Elements",
+                    "Geochronology"
+                ],
+                serviceType: "ArcGIS REST",
+                lastUpdated: "2025-01-14",
+                status: "Online"
+            },
+            {
+                mapserverName: "NSW Comprehensive Geoscience",
+                agency: "Geological Survey NSW",
+                jurisdiction: "NSW",
+                category: "Geology",
+                mapserverUrl: "https://gs.geoscience.nsw.gov.au/geoserver/nsw:comprehensive_geoscience/ows",
+                layerCount: 45,
+                layers: [
+                    "Geological Map 1:100,000",
+                    "Geological Map 1:250,000",
+                    "Structural Elements",
+                    "Metamorphic Zones",
+                    "Mineral Occurrences",
+                    "Mine Sites",
+                    "Drill Holes",
+                    "Coal Resources",
+                    "Coal Seams",
+                    "Petroleum Wells",
+                    "Geophysical Surveys",
+                    "Gravity Stations",
+                    "Magnetic Surveys",
+                    "Seismic Lines",
+                    "Geochronology",
+                    "Geochemistry",
+                    "Rock Properties",
+                    "Fossils",
+                    "Stratigraphic Units",
+                    "Geological Provinces",
+                    "Tectonic Units",
+                    "Mineral Systems",
+                    "Resource Assessments",
+                    "Environmental Geology",
+                    "Engineering Geology",
+                    "Hydrogeology",
+                    "Acid Sulfate Soils",
+                    "Contaminated Land",
+                    "Landslide Risk",
+                    "Flood Risk",
+                    "Coastal Hazards",
+                    "Urban Geology",
+                    "3D Geological Models",
+                    "Cross Sections",
+                    "Borehole Data",
+                    "Core Photography",
+                    "Sample Locations",
+                    "Laboratory Results",
+                    "Publication Index",
+                    "Report Index",
+                    "Map Index",
+                    "Data Quality",
+                    "Metadata",
+                    "Coverage Areas",
+                    "Update Status"
+                ],
+                serviceType: "GeoServer WMS/WFS",
+                lastUpdated: "2025-01-20",
+                status: "Online"
+            },
+            {
+                mapserverName: "QLD Geoscience Geology",
+                agency: "Geological Survey QLD",
+                jurisdiction: "QLD",
+                category: "Geology",
+                mapserverUrl: "http://geology.information.qld.gov.au/geoserver/gsq/ows",
+                layerCount: 35,
+                layers: [
+                    "Surface Geology 1:100k",
+                    "Surface Geology 1:250k",
+                    "Surface Geology 1:1M",
+                    "Bedrock Geology",
+                    "Regolith",
+                    "Quaternary Geology",
+                    "Geological Provinces",
+                    "Structural Elements",
+                    "Metamorphic Zones",
+                    "Intrusive Suites",
+                    "Volcanic Groups",
+                    "Sedimentary Basins",
+                    "Coal Measures",
+                    "Mineral Deposits",
+                    "Mine Locations",
+                    "Quarries",
+                    "Exploration Sites",
+                    "Drill Holes",
+                    "Geophysical Surveys",
+                    "Aeromagnetic Data",
+                    "Gravity Data",
+                    "Radiometric Data",
+                    "Electromagnetic Data",
+                    "Seismic Data",
+                    "Geochemistry",
+                    "Rock Samples",
+                    "Fossil Sites",
+                    "Geochronology",
+                    "Isotope Data",
+                    "Petroleum Wells",
+                    "Gas Shows",
+                    "Oil Shows",
+                    "Coal Quality",
+                    "Coal Resources",
+                    "Environmental Geology"
+                ],
+                serviceType: "GeoServer WMS/WFS",
+                lastUpdated: "2025-01-18",
+                status: "Online"
+            },
+            {
+                mapserverName: "VIC Geological Mapping",
+                agency: "Geological Survey VIC",
+                jurisdiction: "VIC",
+                category: "Geology",
+                mapserverUrl: "http://geology.data.vic.gov.au/services/mapping/ows",
+                layerCount: 28,
+                layers: [
+                    "Surface Geology 1:63,360",
+                    "Surface Geology 1:250,000",
+                    "Bedrock Geology",
+                    "Quaternary Geology",
+                    "Geological Units Cenozoic",
+                    "Geological Units Mesozoic",
+                    "Geological Units Paleozoic",
+                    "Geological Units Precambrian",
+                    "Intrusive Rocks",
+                    "Volcanic Rocks",
+                    "Sedimentary Rocks",
+                    "Metamorphic Rocks",
+                    "Structural Elements",
+                    "Faults",
+                    "Folds",
+                    "Dykes",
+                    "Mineral Deposits",
+                    "Mine Sites",
+                    "Quarries",
+                    "Coal Resources",
+                    "Brown Coal",
+                    "Petroleum Wells",
+                    "Geothermal Sites",
+                    "Geophysical Anomalies",
+                    "Geochronology",
+                    "Fossils",
+                    "Type Localities",
+                    "Reference Sections"
+                ],
+                serviceType: "GeoServer WMS/WFS",
+                lastUpdated: "2025-01-16",
+                status: "Online"
+            },
+            {
+                mapserverName: "SARIG Geology Data",
+                agency: "Geological Survey SA",
+                jurisdiction: "SA",
+                category: "Geology",
+                mapserverUrl: "https://services.sarig.sa.gov.au/vector/geology/ows",
+                layerCount: 32,
+                layers: [
+                    "Surface Geology 1:63,360",
+                    "Surface Geology 1:250,000",
+                    "Surface Geology 1:1,000,000",
+                    "Bedrock Geology",
+                    "Regolith",
+                    "Geological Units",
+                    "Stratigraphic Units",
+                    "Lithostratigraphic Units",
+                    "Chronostratigraphic Units",
+                    "Intrusive Complexes",
+                    "Volcanic Complexes",
+                    "Metamorphic Complexes",
+                    "Structural Elements",
+                    "Faults",
+                    "Folds",
+                    "Shear Zones",
+                    "Lineaments",
+                    "Geological Provinces",
+                    "Domains",
+                    "Terranes",
+                    "Mineral Deposits",
+                    "Mines Active",
+                    "Mines Historical",
+                    "Prospects",
+                    "Occurrences",
+                    "Quarries",
+                    "Petroleum Wells",
+                    "Water Wells",
+                    "Geothermal Wells",
+                    "Geophysical Surveys",
+                    "Geochemistry",
+                    "Geochronology"
+                ],
+                serviceType: "GeoServer WMS/WFS",
+                lastUpdated: "2025-01-14",
+                status: "Online"
+            },
+            {
+                mapserverName: "MRT Comprehensive Geoscience",
+                agency: "MRT Tasmania",
+                jurisdiction: "TAS",
+                category: "Geology",
+                mapserverUrl: "http://www.mrt.tas.gov.au/web-services/ows",
+                layerCount: 25,
+                layers: [
+                    "Surface Geology 1:25,000",
+                    "Surface Geology 1:63,360", 
+                    "Surface Geology 1:250,000",
+                    "Geological Units",
+                    "Stratigraphy",
+                    "Lithology",
+                    "Intrusive Rocks",
+                    "Volcanic Rocks",
+                    "Sedimentary Rocks",
+                    "Metamorphic Rocks",
+                    "Structural Geology",
+                    "Faults",
+                    "Folds",
+                    "Lineaments",
+                    "Mineral Deposits",
+                    "Mines",
+                    "Quarries",
+                    "Prospects",
+                    "Occurrences",
+                    "Drill Holes",
+                    "Geophysical Data",
+                    "Geochemistry",
+                    "Geochronology",
+                    "Fossils",
+                    "Environmental Geology"
+                ],
+                serviceType: "GeoServer WMS/WFS",
+                lastUpdated: "2025-01-11",
+                status: "Online"
+            },
+            {
+                mapserverName: "LIST Topographic",
+                agency: "Land Tasmania",
+                jurisdiction: "TAS",
+                category: "Planning",
+                mapserverUrl: "http://services.thelist.tas.gov.au/arcgis/rest/services/Public/Topographic/MapServer",
+                layerCount: 22,
+                layers: [
+                    "Contours 10m",
+                    "Contours 20m",
+                    "Contours 100m",
+                    "Spot Heights",
+                    "Trigonometric Stations",
+                    "Roads",
+                    "Railways",
+                    "Tracks",
+                    "Coastline",
+                    "Rivers",
+                    "Streams",
+                    "Water Bodies",
+                    "Built Up Areas",
+                    "Localities",
+                    "Placenames",
+                    "Administrative Boundaries",
+                    "Property Boundaries",
+                    "National Parks",
+                    "Forest Reserves",
+                    "Crown Land",
+                    "Vegetation",
+                    "Land Use"
+                ],
+                serviceType: "ArcGIS REST",
+                lastUpdated: "2025-01-09",
+                status: "Online"
+            },
+            {
+                mapserverName: "ACTmapi Territory Plan",
+                agency: "Environment, Planning and Sustainable Development Directorate",
+                jurisdiction: "ACT",
+                category: "Planning",
+                mapserverUrl: "https://actmapi.act.gov.au/arcgis/rest/services/actmapi/tp_layers/MapServer",
+                layerCount: 18,
+                layers: [
+                    "Territory Plan Zones",
+                    "Territory Plan Overlays",
+                    "Precinct Maps",
+                    "Development Tables",
+                    "Land Use Policies",
+                    "Building Height",
+                    "Floor Space Ratio",
+                    "Parking Requirements",
+                    "Landscape Requirements",
+                    "Heritage Places",
+                    "Tree Protection",
+                    "Environmental Significance",
+                    "Noise Attenuation",
+                    "Contaminated Land",
+                    "Natural Hazards",
+                    "Transport Corridors", 
+                    "Community Facilities",
+                    "Open Space"
+                ],
+                serviceType: "ArcGIS REST",
+                lastUpdated: "2025-01-07",
+                status: "Online"
+            },
+            {
+                mapserverName: "GA Australian Bathymetry Topography",
+                agency: "Geoscience Australia",
+                jurisdiction: "Commonwealth",
+                category: "Geology",
+                mapserverUrl: "https://services.ga.gov.au/gis/services/Australian_Bathymetry_Topography/MapServer",
+                layerCount: 6,
+                layers: [
+                    "Australian Bathymetry Topography Grid 2009 9 second",
+                    "Australian Bathymetry Topography Grid 2009 3 second",
+                    "Australian Bathymetry Topography Grid 2009 1 second",
+                    "Bathymetry Contours",
+                    "Topographic Contours",
+                    "Hillshade Relief"
+                ],
+                serviceType: "ArcGIS REST",
+                lastUpdated: "2025-01-13",
+                status: "Online"
+            },
+            // Additional services from research document
+            {
+                mapserverName: "GA National Geophysical Grids",
+                agency: "Geoscience Australia",
+                jurisdiction: "Commonwealth",
+                category: "Geology",
+                mapserverUrl: "https://services.ga.gov.au/gis/geophysical-grids/ows",
+                layerCount: 12,
+                layers: [
+                    "Total Magnetic Intensity",
+                    "Magnetic Anomaly",
+                    "Bouguer Gravity",
+                    "Isostatic Gravity",
+                    "Radiometric Potassium",
+                    "Radiometric Thorium",
+                    "Radiometric Uranium",
+                    "Digital Elevation Model",
+                    "Crustal Thickness",
+                    "Heat Flow",
+                    "Weathering Intensity",
+                    "Regolith Depth"
+                ],
+                serviceType: "OGC WMS/WFS",
+                lastUpdated: "2025-01-20",
+                status: "Online"
+            },
+            {
+                mapserverName: "NSW OneGeology Services",
+                agency: "Geological Survey NSW",
+                jurisdiction: "NSW",
+                category: "Geology",
+                mapserverUrl: "https://gs-seamless.geoscience.nsw.gov.au/geoserver/onegeology/ows",
+                layerCount: 8,
+                layers: [
+                    "Geological Units",
+                    "Lithology",
+                    "Age",
+                    "Metamorphic Grade",
+                    "Deformation",
+                    "Faults",
+                    "Contacts",
+                    "Geological Structures"
+                ],
+                serviceType: "GeoServer WMS",
+                lastUpdated: "2025-01-19",
+                status: "Online"
+            },
+            {
+                mapserverName: "VIC Vicmap as a Service",
+                agency: "Department of Transport and Planning",
+                jurisdiction: "VIC",
+                category: "Planning",
+                mapserverUrl: "https://services.land.vic.gov.au/vicmap/",
+                layerCount: 50,
+                layers: [
+                    "Property",
+                    "Address",
+                    "Transport",
+                    "Hydrology",
+                    "Administrative Boundaries",
+                    "Topography",
+                    "Vegetation",
+                    "Planning Zones",
+                    "Overlays",
+                    "Crown Land",
+                    "Public Land",
+                    "Easements",
+                    "Elevation",
+                    "Imagery",
+                    "Features of Interest",
+                    "Emergency Management",
+                    "Infrastructure",
+                    "Utilities",
+                    "Education",
+                    "Health",
+                    "Recreation",
+                    "Cultural Features",
+                    "Built Environment",
+                    "Natural Features",
+                    "Marine Features",
+                    "Coastal Features",
+                    "Islands",
+                    "Reefs",
+                    "Navigation",
+                    "Survey Control",
+                    "Geodetic Network",
+                    "Cadastral Control",
+                    "Land Use",
+                    "Zoning",
+                    "Heritage",
+                    "Environmental Significance",
+                    "Bushfire Risk",
+                    "Flood Risk",
+                    "Landslide Risk",
+                    "Erosion Risk",
+                    "Salinity Risk",
+                    "Climate Data",
+                    "Soil Types",
+                    "Geology",
+                    "Minerals",
+                    "Quarries",
+                    "Mines",
+                    "Petroleum",
+                    "Geothermal",
+                    "Groundwater"
+                ],
+                serviceType: "ArcGIS REST",
+                lastUpdated: "2025-01-18",
+                status: "Online"
+            },
+            {
+                mapserverName: "QLD GeoResGlobe Services",
+                agency: "Department of Resources",
+                jurisdiction: "QLD",
+                category: "Geology",
+                mapserverUrl: "https://georesglobe.information.qld.gov.au/server/rest/services",
+                layerCount: 25,
+                layers: [
+                    "Mining Tenements",
+                    "Exploration Permits",
+                    "Mining Leases",
+                    "Mineral Development Licences",
+                    "Petroleum Tenements",
+                    "Geothermal Tenements",
+                    "Greenhouse Gas Tenements",
+                    "Coal Seam Gas",
+                    "Mineral Occurrences",
+                    "Operating Mines",
+                    "Historical Mines",
+                    "Quarries",
+                    "Processing Plants",
+                    "Infrastructure",
+                    "Pipelines",
+                    "Power Lines",
+                    "Railways",
+                    "Roads",
+                    "Ports",
+                    "Native Title",
+                    "Environmental Constraints",
+                    "Protected Areas",
+                    "State Forests",
+                    "Water Resources",
+                    "Geological Mapping"
+                ],
+                serviceType: "ArcGIS REST",
+                lastUpdated: "2025-01-17",
+                status: "Online"
+            },
+            {
+                mapserverName: "WA Airborne Geophysics",
+                agency: "Department of Mines, Industry Regulation and Safety",
+                jurisdiction: "WA",
+                category: "Geology",
+                mapserverUrl: "http://GISSDI.DMP.WA.GOV.AU/GISexternal/services/External/Airborne_Geophysics_External/MapServer/WMSServer",
+                layerCount: 10,
+                layers: [
+                    "Magnetic Surveys",
+                    "Radiometric Surveys",
+                    "Electromagnetic Surveys",
+                    "Gravity Surveys",
+                    "Survey Boundaries",
+                    "Flight Lines",
+                    "Total Magnetic Intensity",
+                    "Potassium",
+                    "Thorium",
+                    "Uranium"
+                ],
+                serviceType: "WMS",
+                lastUpdated: "2025-01-16",
+                status: "Online"
+            },
+            {
+                mapserverName: "WA Minerals Data",
+                agency: "Department of Mines, Industry Regulation and Safety",
+                jurisdiction: "WA",
+                category: "Geology",
+                mapserverUrl: "http://GISSDI.DMP.WA.GOV.AU/GISexternal/services/External/Mineral_External/MapServer/WMSServer",
+                layerCount: 15,
+                layers: [
+                    "Mineral Deposits",
+                    "Operating Mines",
+                    "Mine Sites",
+                    "Mineral Occurrences",
+                    "Commodities",
+                    "Gold Deposits",
+                    "Iron Ore Deposits",
+                    "Base Metal Deposits",
+                    "Lithium Deposits",
+                    "Rare Earth Elements",
+                    "Industrial Minerals",
+                    "Construction Materials",
+                    "Gemstones",
+                    "Coal Deposits",
+                    "Uranium Deposits"
+                ],
+                serviceType: "WMS",
+                lastUpdated: "2025-01-15",
+                status: "Online"
+            },
+            {
+                mapserverName: "WA Petroleum Data",
+                agency: "Department of Mines, Industry Regulation and Safety",
+                jurisdiction: "WA",
+                category: "Geology",
+                mapserverUrl: "http://GISSDI.DMP.WA.GOV.AU/GISexternal/services/External/Petroleum_External/MapServer/WMSServer",
+                layerCount: 12,
+                layers: [
+                    "Petroleum Wells",
+                    "Oil Fields",
+                    "Gas Fields",
+                    "Pipelines",
+                    "Processing Facilities",
+                    "Petroleum Titles",
+                    "Exploration Permits",
+                    "Production Licenses",
+                    "Retention Leases",
+                    "Infrastructure Licenses",
+                    "Seismic Surveys",
+                    "Geological Basins"
+                ],
+                serviceType: "WMS",
+                lastUpdated: "2025-01-14",
+                status: "Online"
+            },
+            {
+                mapserverName: "TAS Geological Imagery",
+                agency: "MRT Tasmania",
+                jurisdiction: "TAS",
+                category: "Geology",
+                mapserverUrl: "http://www.mrt.tas.gov.au/erdas-iws/ogc/wms",
+                layerCount: 8,
+                layers: [
+                    "Aeromagnetic Images",
+                    "Radiometric Images",
+                    "Gravity Images",
+                    "Digital Elevation Models",
+                    "Hillshade",
+                    "Slope",
+                    "Aspect",
+                    "Geological Interpretations"
+                ],
+                serviceType: "WMS",
+                lastUpdated: "2025-01-13",
+                status: "Online"
+            },
+            {
+                mapserverName: "NT Geological Imagery",
+                agency: "NT Geological Survey",
+                jurisdiction: "NT",
+                category: "Geology",
+                mapserverUrl: "http://geoscience.nt.gov.au/erdas-iws/ogc/wms/GIWS_NT",
+                layerCount: 10,
+                layers: [
+                    "Total Magnetic Intensity",
+                    "First Vertical Derivative",
+                    "Bouguer Gravity",
+                    "Radiometric Ternary",
+                    "Potassium",
+                    "Thorium",
+                    "Uranium",
+                    "Digital Elevation Model",
+                    "Satellite Imagery",
+                    "Geological Interpretations"
+                ],
+                serviceType: "WMS",
+                lastUpdated: "2025-01-12",
+                status: "Online"
+            },
+            {
+                mapserverName: "BOM Weather Observations",
+                agency: "Bureau of Meteorology",
+                jurisdiction: "Commonwealth",
+                category: "Weather",
+                mapserverUrl: "http://www.bom.gov.au/fwo/",
+                layerCount: 20,
+                layers: [
+                    "Weather Stations",
+                    "Temperature",
+                    "Rainfall",
+                    "Wind Speed",
+                    "Wind Direction",
+                    "Humidity",
+                    "Pressure",
+                    "Cloud Cover",
+                    "Visibility",
+                    "UV Index",
+                    "Solar Radiation",
+                    "Evaporation",
+                    "Soil Temperature",
+                    "Soil Moisture",
+                    "River Heights",
+                    "Dam Levels",
+                    "Wave Heights",
+                    "Sea Temperature",
+                    "Tide Gauges",
+                    "Weather Warnings"
+                ],
+                serviceType: "JSON/XML API",
+                lastUpdated: "2025-01-20",
+                status: "Online"
+            },
+            {
+                mapserverName: "ABS Statistical Boundaries",
+                agency: "Australian Bureau of Statistics",
+                jurisdiction: "Commonwealth",
+                category: "Statistics",
+                mapserverUrl: "https://geo.abs.gov.au/geoserver/abs/ows",
+                layerCount: 18,
+                layers: [
+                    "Statistical Area Level 1",
+                    "Statistical Area Level 2",
+                    "Statistical Area Level 3",
+                    "Statistical Area Level 4",
+                    "Greater Capital City Areas",
+                    "Significant Urban Areas",
+                    "Urban Centres and Localities",
+                    "Remoteness Areas",
+                    "Indigenous Areas",
+                    "Indigenous Locations",
+                    "Indigenous Regions",
+                    "Commonwealth Electoral Divisions",
+                    "State Electoral Divisions",
+                    "Local Government Areas",
+                    "Postal Areas",
+                    "Tourism Regions",
+                    "Australian Drainage Divisions",
+                    "Natural Resource Management Regions"
+                ],
+                serviceType: "GeoServer WMS/WFS",
+                lastUpdated: "2025-01-19",
+                status: "Online"
+            },
+            {
+                mapserverName: "Transport NSW Open Data",
+                agency: "Transport for NSW",
+                jurisdiction: "NSW",
+                category: "Transport",
+                mapserverUrl: "https://opendata.transport.nsw.gov.au/geoserver/ows",
+                layerCount: 35,
+                layers: [
+                    "Train Stations",
+                    "Bus Stops",
+                    "Ferry Wharves",
+                    "Light Rail Stops",
+                    "Train Lines",
+                    "Bus Routes",
+                    "Ferry Routes",
+                    "Light Rail Lines",
+                    "Road Network",
+                    "Traffic Signals",
+                    "Speed Cameras",
+                    "Red Light Cameras",
+                    "Mobile Speed Camera Sites",
+                    "School Zones",
+                    "Clearways",
+                    "Transit Lanes",
+                    "Bicycle Network",
+                    "Shared Paths",
+                    "Park and Ride",
+                    "Taxi Ranks",
+                    "Car Share Pods",
+                    "Electric Vehicle Charging",
+                    "Rest Areas",
+                    "Truck Stops",
+                    "Weigh Stations",
+                    "Incident Locations",
+                    "Roadwork Sites",
+                    "Special Events",
+                    "Public Transport Zones",
+                    "Opal Retailers",
+                    "Customer Service Centres",
+                    "Transport Interchanges",
+                    "Airports",
+                    "Cruise Terminals",
+                    "Freight Networks"
+                ],
+                serviceType: "GeoServer WMS/WFS",
+                lastUpdated: "2025-01-18",
+                status: "Online"
+            },
+            {
+                mapserverName: "EPA Victoria Air Quality",
+                agency: "Environment Protection Authority Victoria",
+                jurisdiction: "VIC",
+                category: "Environment",
+                mapserverUrl: "https://gateway.api.epa.vic.gov.au/environmentMonitoring/",
+                layerCount: 12,
+                layers: [
+                    "Air Monitoring Stations",
+                    "PM2.5 Levels",
+                    "PM10 Levels",
+                    "Ozone Levels",
+                    "Nitrogen Dioxide",
+                    "Sulfur Dioxide",
+                    "Carbon Monoxide",
+                    "Air Quality Index",
+                    "Visibility",
+                    "Wind Speed",
+                    "Wind Direction",
+                    "Temperature"
+                ],
+                serviceType: "REST API",
+                lastUpdated: "2025-01-17",
+                status: "Online"
+            },
+            {
+                mapserverName: "Atlas of Living Australia",
+                agency: "CSIRO",
+                jurisdiction: "Commonwealth",
+                category: "Biodiversity",
+                mapserverUrl: "https://spatial.ala.org.au/geoserver/ALA/ows",
+                layerCount: 40,
+                layers: [
+                    "Species Occurrences",
+                    "Species Richness",
+                    "Endemic Species",
+                    "Threatened Species",
+                    "Invasive Species",
+                    "Migratory Species",
+                    "IBRA Bioregions",
+                    "IMCRA Marine Bioregions",
+                    "National Reserve System",
+                    "Indigenous Protected Areas",
+                    "World Heritage Areas",
+                    "Ramsar Wetlands",
+                    "Important Bird Areas",
+                    "Key Biodiversity Areas",
+                    "Biodiversity Hotspots",
+                    "Vegetation Groups",
+                    "Major Vegetation Groups",
+                    "Native Vegetation Extent",
+                    "Vegetation Condition",
+                    "Land Use",
+                    "Protected Areas",
+                    "Conservation Management Zones",
+                    "Wilderness Areas",
+                    "Ecological Communities",
+                    "Threatened Ecological Communities",
+                    "Marine Protected Areas",
+                    "Fish Habitat Areas",
+                    "Terrestrial Ecoregions",
+                    "Marine Ecoregions",
+                    "Freshwater Ecoregions",
+                    "Climate Zones",
+                    "Environmental Layers",
+                    "Bioclimatic Variables",
+                    "Terrain Variables",
+                    "Substrate Variables",
+                    "Marine Variables",
+                    "Expert Distributions",
+                    "Checklist Areas",
+                    "Museums and Herbaria",
+                    "BioCollect Projects"
+                ],
+                serviceType: "GeoServer WMS/WFS",
+                lastUpdated: "2025-01-16",
+                status: "Online"
+            },
+            {
+                mapserverName: "AIMS Marine Data",
+                agency: "Australian Institute of Marine Science",
+                jurisdiction: "Commonwealth",
+                category: "Marine",
+                mapserverUrl: "https://geoserver.aims.gov.au/geoserver/ows",
+                layerCount: 25,
+                layers: [
+                    "Monitoring Sites",
+                    "Great Barrier Reef Zones",
+                    "Coral Cover",
+                    "Coral Bleaching",
+                    "Crown of Thorns Starfish",
+                    "Water Temperature",
+                    "Chlorophyll",
+                    "Turbidity",
+                    "Salinity",
+                    "pH Levels",
+                    "Dissolved Oxygen",
+                    "Nutrients",
+                    "Weather Stations",
+                    "Wave Buoys",
+                    "Current Meters",
+                    "Tide Gauges",
+                    "Reef Health",
+                    "Fish Abundance",
+                    "Seagrass Distribution",
+                    "Mangrove Extent",
+                    "Catchment Loads",
+                    "River Plumes",
+                    "Cyclone Tracks",
+                    "Shipping Lanes",
+                    "Research Vessels"
+                ],
+                serviceType: "GeoServer WMS/WFS",
+                lastUpdated: "2025-01-15",
+                status: "Online"
+            },
+            {
+                mapserverName: "WaterNSW Real Time Data",
+                agency: "WaterNSW",
+                jurisdiction: "NSW",
+                category: "Water",
+                mapserverUrl: "https://realtimedata.waternsw.com.au/",
+                layerCount: 15,
+                layers: [
+                    "River Gauges",
+                    "Dam Levels",
+                    "Storage Volumes",
+                    "Rainfall Stations",
+                    "Water Quality Sites",
+                    "Flow Rates",
+                    "Water Temperature",
+                    "Electrical Conductivity",
+                    "Dissolved Oxygen",
+                    "Turbidity",
+                    "pH Monitoring",
+                    "Blue-green Algae",
+                    "Groundwater Bores",
+                    "Irrigation Channels",
+                    "Water Allocations"
+                ],
+                serviceType: "REST API",
+                lastUpdated: "2025-01-14",
+                status: "Online"
+            },
+            {
+                mapserverName: "CSIRO Sensor Data",
+                agency: "CSIRO",
+                jurisdiction: "Commonwealth",
+                category: "Environment",
+                mapserverUrl: "https://senaps.io/api/sensor/v2",
+                layerCount: 10,
+                layers: [
+                    "Environmental Sensors",
+                    "Air Temperature",
+                    "Water Temperature",
+                    "Humidity",
+                    "Solar Radiation",
+                    "Wind Speed",
+                    "Wind Direction",
+                    "Rainfall",
+                    "Soil Moisture",
+                    "Atmospheric Pressure"
+                ],
+                serviceType: "REST API",
+                lastUpdated: "2025-01-13",
+                status: "Online"
+            },
+            {
+                mapserverName: "NSW Planning Portal",
+                agency: "Department of Planning and Environment",
+                jurisdiction: "NSW",
+                category: "Planning",
+                mapserverUrl: "https://api.planning.nsw.gov.au/",
+                layerCount: 20,
+                layers: [
+                    "Development Applications",
+                    "Complying Development",
+                    "Construction Certificates",
+                    "Occupation Certificates",
+                    "Subdivision Certificates",
+                    "Planning Proposals",
+                    "Zoning Maps",
+                    "Heritage Items",
+                    "Environmental Constraints",
+                    "Bushfire Prone Land",
+                    "Flood Planning Areas",
+                    "Coastal Risk Areas",
+                    "Contaminated Land",
+                    "Acid Sulfate Soils",
+                    "Mine Subsidence Districts",
+                    "Infrastructure Contributions",
+                    "Planning Agreements",
+                    "Urban Release Areas",
+                    "Growth Areas",
+                    "Priority Precincts"
+                ],
+                serviceType: "REST API",
+                lastUpdated: "2025-01-12",
+                status: "Online"
+            },
+            {
+                mapserverName: "GA Oil Gas Pipelines",
+                agency: "Geoscience Australia",
+                jurisdiction: "Commonwealth",
+                category: "Infrastructure",
+                mapserverUrl: "https://services.ga.gov.au/gis/services/Oil_Gas_Pipelines/MapServer",
+                layerCount: 8,
+                layers: [
+                    "Gas Transmission Pipelines",
+                    "Oil Pipelines",
+                    "Multi-product Pipelines",
+                    "Pipeline Infrastructure",
+                    "Compressor Stations",
+                    "Processing Plants",
+                    "Storage Facilities",
+                    "Pipeline Corridors"
+                ],
+                serviceType: "ArcGIS REST",
+                lastUpdated: "2025-01-11",
+                status: "Online"
+            },
+            {
+                mapserverName: "Landgate Cadastral Services",
+                agency: "Landgate",
+                jurisdiction: "WA",
+                category: "Planning",
+                mapserverUrl: "https://services.slip.wa.gov.au/arcgis/rest/services/Landgate_v2_Subscription_Services/Cadastral/MapServer",
+                layerCount: 12,
+                layers: [
+                    "Land Parcels",
+                    "Lot Boundaries",
+                    "Strata Lots",
+                    "Survey Marks",
+                    "Geodetic Marks",
+                    "Crown Allotments",
+                    "Unallocated Crown Land",
+                    "Reserves",
+                    "Easements",
+                    "Caveats",
+                    "Memorial",
+                    "Notifications"
+                ],
+                serviceType: "ArcGIS REST",
+                lastUpdated: "2025-01-10",
+                status: "Online"
+            },
+            {
+                mapserverName: "Landgate Aerial Imagery",
+                agency: "Landgate",
+                jurisdiction: "WA",
+                category: "Imagery",
+                mapserverUrl: "https://services.slip.wa.gov.au/arcgis/rest/services/Landgate_Public_Maps/Locate_Public_Aerial_Imagery/MapServer",
+                layerCount: 6,
+                layers: [
+                    "Current Aerial Photography",
+                    "Historical Aerial Photography",
+                    "Satellite Imagery",
+                    "Image Footprints",
+                    "Flight Lines",
+                    "Image Metadata"
+                ],
+                serviceType: "ArcGIS REST",
+                lastUpdated: "2025-01-09",
+                status: "Online"
+            },
+            {
+                mapserverName: "Victorian Planning Authority",
+                agency: "Victorian Planning Authority",
+                jurisdiction: "VIC",
+                category: "Planning",
+                mapserverUrl: "https://services.land.vic.gov.au/vpa/",
+                layerCount: 15,
+                layers: [
+                    "Precinct Structure Plans",
+                    "Growth Areas",
+                    "Urban Growth Boundary",
+                    "Activity Centres",
+                    "Employment Precincts",
+                    "Infrastructure Contributions",
+                    "Development Contributions",
+                    "Public Acquisition Overlays",
+                    "Native Vegetation Precinct Plans",
+                    "Conservation Areas",
+                    "Heritage Precincts",
+                    "Landscape Values",
+                    "Community Infrastructure",
+                    "Open Space Networks",
+                    "Transport Networks"
+                ],
+                serviceType: "ArcGIS REST",
+                lastUpdated: "2025-01-08",
+                status: "Online"
+            },
+            {
+                mapserverName: "ACT Emergency Services",
+                agency: "ACT Emergency Services Agency",
+                jurisdiction: "ACT",
+                category: "Emergency",
+                mapserverUrl: "https://esa.act.gov.au/arcgis/rest/services/",
+                layerCount: 12,
+                layers: [
+                    "Emergency Incidents",
+                    "Bushfire Risk",
+                    "Grass Fire Risk",
+                    "Fire Stations",
+                    "Ambulance Stations",
+                    "Police Stations",
+                    "SES Units",
+                    "Emergency Assembly Points",
+                    "Evacuation Routes",
+                    "Community Fire Units",
+                    "Fire Trails",
+                    "Water Points"
+                ],
+                serviceType: "ArcGIS REST",
+                lastUpdated: "2025-01-07",
+                status: "Online"
+            },
+            {
+                mapserverName: "ABARES Agricultural Data",
+                agency: "Australian Bureau of Agricultural and Resource Economics and Sciences",
+                jurisdiction: "Commonwealth",
+                category: "Agriculture",
+                mapserverUrl: "https://www.agriculture.gov.au/abares/data/",
+                layerCount: 18,
+                layers: [
+                    "Catchment Scale Land Use",
+                    "Agricultural Commodities",
+                    "Farm Survey Data",
+                    "Irrigation Areas",
+                    "Cropping Regions",
+                    "Grazing Lands",
+                    "Forestry",
+                    "Plantation Estates",
+                    "Native Forests",
+                    "Agricultural Production",
+                    "Commodity Forecasts",
+                    "Climate Impact",
+                    "Drought Conditions",
+                    "Water Availability",
+                    "Soil Health",
+                    "Biosecurity Zones",
+                    "Market Access",
+                    "Trade Statistics"
+                ],
+                serviceType: "WMS/WFS",
+                lastUpdated: "2025-01-06",
+                status: "Online"
+            },
+            {
+                mapserverName: "Main Roads WA",
+                agency: "Main Roads Western Australia",
+                jurisdiction: "WA",
+                category: "Transport",
+                mapserverUrl: "https://portal-mainroads.opendata.arcgis.com/",
+                layerCount: 22,
+                layers: [
+                    "Road Network",
+                    "State Roads",
+                    "National Highways",
+                    "Local Roads",
+                    "Road Hierarchy",
+                    "Traffic Volumes",
+                    "Speed Limits",
+                    "Traffic Signals",
+                    "Roundabouts",
+                    "Bridges",
+                    "Road Condition",
+                    "Crash Data",
+                    "Black Spots",
+                    "Roadworks",
+                    "Permits",
+                    "Heavy Vehicle Routes",
+                    "Restricted Access Vehicle Routes",
+                    "School Zones",
+                    "Railway Crossings",
+                    "Rest Areas",
+                    "Roadside Amenities",
+                    "Cycling Infrastructure"
+                ],
+                serviceType: "ArcGIS REST",
+                lastUpdated: "2025-01-05",
+                status: "Online"
+            }
+        ];
+
+        let currentPage = 1;
+        const itemsPerPage = 20;
+        let filteredData = [...mapserverData];
+
+        // Populate dynamic filter options
+        function populateFilters() {
+            const agencies = [...new Set(mapserverData.map(item => item.agency))].sort();
+            const categories = [...new Set(mapserverData.map(item => item.category))].sort();
+            
+            const agencySelect = document.getElementById('agencyFilter');
+            agencies.forEach(agency => {
+                const option = document.createElement('option');
+                option.value = agency;
+                option.textContent = agency;
+                agencySelect.appendChild(option);
+            });
+            
+            const categorySelect = document.getElementById('categoryFilter');
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categorySelect.appendChild(option);
+            });
+        }
+
+        function renderTable() {
+            const tableBody = document.getElementById('mapserverTableBody');
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageData = filteredData.slice(startIndex, endIndex);
+
+            tableBody.innerHTML = '';
+            
+            pageData.forEach(mapserver => {
+                const row = document.createElement('tr');
+                row.className = `jurisdiction-${mapserver.jurisdiction.toLowerCase()}`;
+                
+                const layersHtml = mapserver.layers.map((layer, index) => 
+                    `<div class="layer-item">${layer} <span class="layer-id">(${index})</span></div>`
+                ).join('');
+                
+                row.innerHTML = `
+                    <td><strong>${mapserver.mapserverName}</strong></td>
+                    <td>${mapserver.agency}</td>
+                    <td>${mapserver.jurisdiction}</td>
+                    <td>${mapserver.category}</td>
+                    <td><a href="${mapserver.mapserverUrl}" target="_blank" class="mapserver-link">${mapserver.mapserverUrl.substring(0, 60)}${mapserver.mapserverUrl.length > 60 ? '...' : ''}</a></td>
+                    <td><span class="layer-count">${mapserver.layerCount}</span></td>
+                    <td><div class="layer-list">${layersHtml}</div></td>
+                    <td>${mapserver.serviceType}</td>
+                    <td>${mapserver.lastUpdated}</td>
+                    <td><span class="status-online">${mapserver.status}</span></td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+
+            renderPagination();
+            updateStats();
+        }
+
+        function renderPagination() {
+            const pagination = document.getElementById('pagination');
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+            
+            pagination.innerHTML = '';
+            
+            // Previous button
+            const prevBtn = document.createElement('button');
+            prevBtn.textContent = '← Previous';
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.onclick = () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderTable();
+                }
+            };
+            pagination.appendChild(prevBtn);
+
+            // Page numbers
+            const startPage = Math.max(1, currentPage - 2);
+            const endPage = Math.min(totalPages, currentPage + 2);
+
+            for (let i = startPage; i <= endPage; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.textContent = i;
+                pageBtn.className = i === currentPage ? 'active' : '';
+                pageBtn.onclick = () => {
+                    currentPage = i;
+                    renderTable();
+                };
+                pagination.appendChild(pageBtn);
+            }
+
+            // Next button
+            const nextBtn = document.createElement('button');
+            nextBtn.textContent = 'Next →';
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.onclick = () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderTable();
+                }
+            };
+            pagination.appendChild(nextBtn);
+        }
+
+        function updateStats() {
+            const totalMapServers = filteredData.length;
+            const totalLayers = filteredData.reduce((sum, ms) => sum + ms.layerCount, 0);
+            const agencies = new Set(filteredData.map(ms => ms.agency)).size;
+            const jurisdictions = new Set(filteredData.map(ms => ms.jurisdiction)).size;
+
+            document.getElementById('totalMapServers').textContent = totalMapServers;
+            document.getElementById('totalLayers').textContent = totalLayers.toLocaleString();
+            document.getElementById('totalAgencies').textContent = agencies;
+            document.getElementById('totalJurisdictions').textContent = jurisdictions;
+        }
+
+        function applyFilters() {
+            const jurisdictionFilter = document.getElementById('jurisdictionFilter').value;
+            const agencyFilter = document.getElementById('agencyFilter').value;
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const layerCountFilter = parseInt(document.getElementById('layerCountFilter').value);
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+
+            filteredData = mapserverData.filter(mapserver => {
+                const matchesJurisdiction = !jurisdictionFilter || mapserver.jurisdiction === jurisdictionFilter;
+                const matchesAgency = !agencyFilter || mapserver.agency === agencyFilter;
+                const matchesCategory = !categoryFilter || mapserver.category === categoryFilter;
+                const matchesLayerCount = mapserver.layerCount >= layerCountFilter;
+                const matchesSearch = !searchInput || 
+                    mapserver.mapserverName.toLowerCase().includes(searchInput) ||
+                    mapserver.agency.toLowerCase().includes(searchInput) ||
+                    mapserver.mapserverUrl.toLowerCase().includes(searchInput) ||
+                    mapserver.layers.some(layer => layer.toLowerCase().includes(searchInput));
+
+                return matchesJurisdiction && matchesAgency && matchesCategory && matchesLayerCount && matchesSearch;
+            });
+
+            currentPage = 1;
+            renderTable();
+        }
+
+        function exportToCSV() {
+            const headers = [
+                'MapServer Name', 'Agency', 'Jurisdiction', 'Category', 'MapServer URL', 
+                'Layer Count', 'Layers', 'Service Type', 'Last Updated', 'Status'
+            ];
+
+            const csvContent = [
+                headers.join(','),
+                ...filteredData.map(mapserver => [
+                    `"${mapserver.mapserverName}"`,
+                    `"${mapserver.agency}"`,
+                    `"${mapserver.jurisdiction}"`,
+                    `"${mapserver.category}"`,
+                    `"${mapserver.mapserverUrl}"`,
+                    `"${mapserver.layerCount}"`,
+                    `"${mapserver.layers.join('; ')}"`,
+                    `"${mapserver.serviceType}"`,
+                    `"${mapserver.lastUpdated}"`,
+                    `"${mapserver.status}"`
+                ].join(','))
+            ].join('\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'australian_mapserver_layers_database.csv';
+            link.click();
+        }
+
+        function exportToExcel() {
+            // For simplicity, export as CSV which can be opened in Excel
+            exportToCSV();
+        }
+
+        function exportLayersList() {
+            const layersContent = filteredData.map(mapserver => 
+                `MapServer: ${mapserver.mapserverName}\nAgency: ${mapserver.agency}\nJurisdiction: ${mapserver.jurisdiction}\nURL: ${mapserver.mapserverUrl}\n\nLayers (${mapserver.layerCount}):\n${mapserver.layers.map((layer, index) => `${index}. ${layer}`).join('\n')}\n\n${'='.repeat(80)}\n\n`
+            ).join('');
+
+            const blob = new Blob([layersContent], { type: 'text/plain;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'australian_mapserver_layers_list.txt';
+            link.click();
+        }
+
+        // Event listeners
+        document.getElementById('jurisdictionFilter').addEventListener('change', applyFilters);
+        document.getElementById('agencyFilter').addEventListener('change', applyFilters);
+        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+        document.getElementById('layerCountFilter').addEventListener('change', applyFilters);
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+
+        // Initialize the application
+        populateFilters();
+        renderTable();
+    </script>
+</body>
+</html>
