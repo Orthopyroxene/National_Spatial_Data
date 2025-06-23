@@ -103,9 +103,11 @@ NSW Spatial Services operates comprehensive foundational spatial data services c
 
 ### WaterNSW
 **Greater Sydney Water Supply System**
+- URL: https://mapprod.waternsw.com.au/arcgis/rest/services/Public/Greater_Sydney_Water_Supply_System/MapServer
 - Description: Major water supply catchments, declared catchment areas, water supply systems, and special controlled areas
 
 **NSW Stream Gauges**
+- URL: https://mapprod.waternsw.com.au/arcgis/rest/services/Public/NSW_Stream_Gauges/MapServer
 - Description: Stream gauge monitoring locations across NSW
 
 ## Victoria Services
@@ -227,29 +229,114 @@ Tasmania provides spatial services through the comprehensive LIST platform.
 - Description: Contains OpenData layers with WFS enabled, including LiDAR Mt. Wellington Index, TASVEG 4.0
 
 **CadastreAndAdministrative**
+- URL: https://services.thelist.tas.gov.au/arcgis/rest/services/Public/CadastreAndAdministrative/MapServer
 - Description: Cadastral and Administrative datasets including property parcel boundaries, land tenure and World Heritage boundaries
 
 **PWSPublic**
+- URL: https://services.thelist.tas.gov.au/arcgis/rest/services/Public/PWSPublic/MapServer
 - Description: Parks and Wildlife Service spatial data depicting PWS assets and interests around Tasmania
 
-**AerialPhoto**
+**AerialPhoto2022**
+- URL: https://services.thelist.tas.gov.au/arcgis/rest/services/Basemaps/AerialPhoto2022/MapServer
 - Description: Tasmania State Orthophoto compilation (2021-2022 season)
 
 ## South Australia Services
 
-South Australia provides specialized services through multiple platforms including SARIG, NatureMaps, and WaterConnect for geological, environmental, and water resource data.
+### South Australian Resources Information Gateway (SARIG)
+**SARIG Geology**
+- URL: https://services.sarig.sa.gov.au/arcgis/rest/services/Geology/MapServer
+- Description: Comprehensive geological mapping including surface geology, bedrock geology, structural elements, and stratigraphic units
+
+**SARIG Minerals**
+- URL: https://services.sarig.sa.gov.au/arcgis/rest/services/Minerals/MapServer
+- Description: Mineral deposits, mines (active and historical), prospects, occurrences, and quarries
+
+**SARIG Tenements**
+- URL: https://services.sarig.sa.gov.au/arcgis/rest/services/Tenements/MapServer
+- Description: Current mineral exploration licenses, mining leases, retention leases, and applications
+
+**SARIG Petroleum**
+- URL: https://services.sarig.sa.gov.au/arcgis/rest/services/Petroleum/MapServer
+- Description: Petroleum wells, oil and gas fields, pipelines, and petroleum tenements
+
+### NatureMaps SA
+**Protected Areas**
+- URL: https://data.environment.sa.gov.au/arcgis/rest/services/NatureMaps/ProtectedAreas/MapServer
+- Description: National parks, conservation parks, wilderness protection areas, and heritage agreements
+
+**Native Vegetation**
+- URL: https://data.environment.sa.gov.au/arcgis/rest/services/NatureMaps/NativeVegetation/MapServer
+- Description: Native vegetation extent, condition, and ecological communities
+
+### SA Water
+**Water Infrastructure**
+- URL: https://spatial.sawater.com.au/arcgis/rest/services/Public/WaterInfrastructure/MapServer
+- Description: Water mains, wastewater networks, treatment plants, and service areas
 
 ## Northern Territory Services
 
-**NR Maps Service**
-- Platform: https://nrmaps.nt.gov.au/
-- Description: Natural resource datasets including groundwater dependent development potential, environmental data
+### NT Department of Environment, Parks and Water Security
+**Mapping the Future Datasets**
+- URL: https://gis-d.nt.gov.au/arcgis/rest/services/Mapping_the_Future_Datasets/MapServer
+- Description: Comprehensive NT datasets including cadastre, tenure, planning zones, and administrative boundaries
 
-Northern Territory provides services through NTLIS and specialized platforms focusing on natural resources and geological data.
+**Water Resources**
+- URL: https://gis-d.nt.gov.au/arcgis/rest/services/Water/WaterResources/MapServer
+- Description: Water control districts, bore locations, water monitoring sites, and groundwater management zones
+
+**Vegetation Mapping**
+- URL: https://gis-d.nt.gov.au/arcgis/rest/services/Environment/VegetationMapping/MapServer
+- Description: Native vegetation communities, land systems, and ecological classifications
+
+### NT Geological Survey
+**Regional Geology**
+- URL: https://geoscience.nt.gov.au/arcgis/rest/services/NTGS/RegionalGeology/MapServer
+- Description: Regional geological mapping at various scales covering the Northern Territory
+
+**Mineral Occurrences**
+- URL: https://geoscience.nt.gov.au/arcgis/rest/services/NTGS/MineralOccurrences/MapServer
+- Description: Mineral deposits, prospects, and occurrences with commodity information
+
+**Geophysics**
+- URL: https://geoscience.nt.gov.au/arcgis/rest/services/NTGS/Geophysics/MapServer
+- Description: Airborne magnetic, radiometric, and electromagnetic survey data
+
+### NT Land Information System (NTLIS)
+**Cadastral Mapping**
+- URL: https://gis-d.nt.gov.au/arcgis/rest/services/NTLIS/CadastralMapping/MapServer
+- Description: Property boundaries, lot numbers, and land tenure information
 
 ## Australian Capital Territory Services
 
-ACT operates ACTmapi platform with organized service folders covering administration, cadastre, emergency management, environment, heritage, imagery, planning, transport, and water services.
+### ACTmapi Platform
+**Territory Plan**
+- URL: https://actmapi.act.gov.au/arcgis/rest/services/actmapi/tp_layers/MapServer
+- Description: Territory Plan zones, overlays, precinct maps, development tables, and land use policies
+
+**Heritage**
+- URL: https://actmapi.act.gov.au/arcgis/rest/services/actmapi/heritage/MapServer
+- Description: Heritage places, precincts, and Aboriginal heritage sites
+
+**Environment**
+- URL: https://actmapi.act.gov.au/arcgis/rest/services/actmapi/environment/MapServer
+- Description: Nature reserves, environmental protection areas, trees, and ecological communities
+
+**Block and Section**
+- URL: https://actmapi.act.gov.au/arcgis/rest/services/actmapi/block_section/MapServer
+- Description: Cadastral boundaries showing blocks and sections
+
+**Transport**
+- URL: https://actmapi.act.gov.au/arcgis/rest/services/actmapi/transport/MapServer
+- Description: Road network, public transport routes, cycling paths, and parking areas
+
+**Utilities**
+- URL: https://actmapi.act.gov.au/arcgis/rest/services/actmapi/utilities/MapServer
+- Description: Electricity, gas, water, and telecommunications infrastructure
+
+### ACT Emergency Services Agency
+**Emergency Services**
+- URL: https://esa.act.gov.au/arcgis/rest/services/ACT_ESA/EmergencyServices/MapServer
+- Description: Fire stations, ambulance stations, SES units, emergency assembly points, and evacuation routes
 
 ## Infrastructure and Utilities Services
 
