@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australian Data Exploration Matrix</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1400px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 6px;
+            text-align: left;
+            vertical-align: top;
+            font-size: 0.85em;
+        }
+        th {
+            background-color: #34495e;
+            color: white;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .category-header {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+            width: 180px;
+        }
+        .filled {
+            background-color: #d4edda;
+        }
+        .partial {
+            background-color: #fff3cd;
+        }
+        .restricted {
+            background-color: #f8d7da;
+        }
+        .empty {
+            background-color: #f1f1f1;
+            color: #999;
+        }
+        .source-note {
+            font-size: 0.75em;
+            color: #666;
+            font-style: italic;
+        }
+        .service-link {
+            font-size: 0.7em;
+            color: #007bff;
+            word-break: break-all;
+        }
+        .service-type {
+            font-size: 0.75em;
+            color: #28a745;
+            font-weight: bold;
+        }
+        .license-info {
+            font-size: 0.7em;
+            color: #dc3545;
+            font-weight: bold;
+            background-color: #fff;
+            padding: 1px 3px;
+            border-radius: 3px;
+            border: 1px solid #dc3545;
+        }
+        .notes {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Australian Data Exploration Matrix</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th class="category-header">Data Category</th>
+                    <th>Northern Territory</th>
+                    <th>South Australia</th>
+                    <th>Queensland</th>
+                    <th>New South Wales</th>
+                    <th>Victoria</th>
+                    <th>Tasmania</th>
+                    <th>Canberra (ACT)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="category-header">Bushfire Prone Areas</td>
+                    <td class="partial">NT Open Data Portal<br><span class="source-note">Last updated 2023</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Planning & Design Code Overlays<br><span class="source-note">Available in hazard risks</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 AU</span></td>
+                    <td class="filled">QSpatial<br><span class="service-type">ArcGIS REST</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">NSW RFS / Spatial Services<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Bushfire Prone Area (ID: 49)<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Public/PlanningOnline<br><span class="source-note">Within zoning code overlay with other hazards</span><br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span><br><span class="service-link">https://services.thelist.tas.gov.au/arcgis/rest/services/Public/PlanningOnline/MapServer/14</span></td>
+                    <td class="filled">SBMP BPA<br><span class="source-note">Geospatial Data Catalogue</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Dieback Confidence Mapping</td>
+                    <td class="empty">Not available outside WA</td>
+                    <td class="empty">Not available outside WA</td>
+                    <td class="empty">Not available outside WA</td>
+                    <td class="empty">Not available outside WA</td>
+                    <td class="empty">Not available outside WA</td>
+                    <td class="empty">Not available outside WA</td>
+                    <td class="empty">Not available outside WA</td>
+                </tr>
+                <tr>
+                    <td class="category-header">Environment and Conservation</td>
+                    <td class="filled">Department of Environment and Natural Resources<br><span class="source-note">Free of charge</span><br><span class="service-type">WMS + Static Download</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">data.sa.gov.au<br><span class="source-note">170+ shapefile downloads available</span><br><span class="service-type">Static Download (SHP)</span><br><span class="license-info">CC BY 4.0 AU</span></td>
+                    <td class="filled">QSpatial<br><span class="source-note">Environment folders available</span><br><span class="service-type">ArcGIS REST</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">NSW Environment and Heritage<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Melbourne Strategic Assessment (MSA)<br><span class="source-note">Conservation data, waterway, wetlands, vegetation data</span><br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">DPIPWE Tasmania<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 3.0 AU</span></td>
+                    <td class="filled">Mature Trees<br><span class="source-note">ACTGOV Mature Tree 2020 Centre Points</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Geology and Soils</td>
+                    <td class="filled">Department of Environment and Natural Resources<br><span class="source-note">Static download as shapefile or gdb</span><br><span class="service-type">WMS + Static Download</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Land Types of Southern South Australia<br><span class="source-note">Soil landscapes</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 AU</span></td>
+                    <td class="filled">QSpatial<br><span class="source-note">Geoscience data available</span><br><span class="service-type">ArcGIS REST</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">NSW Spatial Services / Geological Survey NSW<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">VicMap / Geological Survey Victoria<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Mineral Resources Tasmania<br><span class="service-type">WFS</span><br><span class="license-info">CC BY 3.0 AU</span><br><span class="service-link">https://data.stategrowth.tas.gov.au/ags/services/MRT/Mineral_Resources_Tasmania_OGC/MapServer/WFSServer</span></td>
+                    <td class="filled">ACT Government Geospatial Data Catalogue<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Geomorphic Wetlands</td>
+                    <td class="partial">Department of Environment and Natural Resources<br><span class="source-note">Geomorphic data available, not wetland-specific</span><br><span class="service-type">WMS + Static Download</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="empty">Not available</td>
+                    <td class="partial">QSpatial<br><span class="source-note">Geomorphic data available, not wetland-specific</span><br><span class="service-type">ArcGIS REST</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="partial">NSW Environment and Heritage<br><span class="source-note">Geomorphic data available, not wetland-specific</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Wetland data available<br><span class="source-note">General wetlands, not geomorphic-specific</span><br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="partial">Geomorphic Dunes<br><span class="source-note">Other geomorphic data, not wetland-specific</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 3.0 AU</span></td>
+                    <td class="empty">Not available</td>
+                </tr>
+                <tr>
+                    <td class="category-header">Groundwater Monitoring Bores</td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="partial">Bore data available<br><span class="source-note">But not specific</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 AU</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Public/Infrastructure<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 3.0 AU</span></td>
+                    <td class="empty">-</td>
+                </tr>
+                <tr>
+                    <td class="category-header">Heritage</td>
+                    <td class="restricted">Sacred Sites NT<br><span class="source-note">Restricted Access - Contact Aboriginal Areas Protection Authority</span><br><span class="service-type">Restricted Access</span><br><span class="license-info">Restricted</span></td>
+                    <td class="filled">SA Heritage Places<br><span class="service-type">Download (SHP)</span><br><span class="license-info">CC BY 4.0 AU</span><br><span class="service-link">data.sa.gov.au</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Landfolio<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Heritage Tasmania (HT)<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Heritage Register<br><span class="source-note">All data in one layer</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Hydrogeology</td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 AU</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">vicmap/Vicmap_Hydro<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="empty">Not Available</td>
+                    <td class="empty">-</td>
+                </tr>
+                <tr>
+                    <td class="category-header">Hydrography</td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 AU</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Mapshare/WaterAndCatchment<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">public/opendataWFS<br><span class="service-type">WFS</span><br><span class="license-info">CC BY 3.0 AU</span></td>
+                    <td class="filled">Water Body Poly<br><span class="source-note">Geofabric</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">Federal (BoM)</span></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Industry and Mining</td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 AU</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="partial">Mineral Resources Tasmania<br><span class="source-note">Need to define what layers to use</span><br><span class="service-type">WFS</span><br><span class="license-info">CC BY 3.0 AU</span></td>
+                    <td class="empty">-</td>
+                </tr>
+                <tr>
+                    <td class="category-header">Infrastructure</td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 AU</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Mapshare/Utility<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Public/Infrastructure<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 3.0 AU</span></td>
+                    <td class="filled">Stormwater & Streetlights<br><span class="source-note">Multiple infrastructure datasets</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Lakes and Rivers</td>
+                    <td class="filled">Available + Geofabric<br><span class="source-note">National water feature dataset</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 + Federal (BoM)</span></td>
+                    <td class="filled">Waterbodies in South Australia + Geofabric<br><span class="source-note">State data + National water features</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 AU + Federal (BoM)</span></td>
+                    <td class="filled">Available + Geofabric<br><span class="source-note">National water feature dataset</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 + Federal (BoM)</span></td>
+                    <td class="filled">Available + Geofabric<br><span class="source-note">National water feature dataset</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 + Federal (BoM)</span></td>
+                    <td class="filled">Available + Geofabric<br><span class="source-note">State data + National water features</span><br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0 + Federal (BoM)</span></td>
+                    <td class="filled">Geofabric<br><span class="source-note">National water feature dataset available</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">Federal (BoM)</span></td>
+                    <td class="filled">Water Body Poly (Geofabric)<br><span class="source-note">National water feature dataset</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">Federal (BoM)</span></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Legislated Lands and Waters</td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Land Use (ACLUMP)<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 AU</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Mapshare/PublicLandAndPark<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">FPA Land Tenure<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 3.0 AU</span></td>
+                    <td class="empty">-</td>
+                </tr>
+                <tr>
+                    <td class="category-header">LGA Boundaries</td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Local Government Areas<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 AU</span><br><span class="service-link">data.sa.gov.au</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Local Government Area (ID: 34)<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Public/PlanningOnline<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 3.0 AU</span></td>
+                    <td class="filled">Districts & Divisions<br><span class="source-note">ACTGOV District & Division datasets</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Mine Sites</td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 AU</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Mineral Resources Tasmania<br><span class="service-type">WFS</span><br><span class="license-info">CC BY 3.0 AU</span></td>
+                    <td class="empty">Not applicable<br><span class="source-note">ACT has minimal mining activity</span></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Mining Tenements</td>
+                    <td class="filled">Northern Territory Mineral Titles<br><span class="service-type">Download (SHP)</span><br><span class="license-info">CC BY 4.0</span><br><span class="service-link">NTG Open Data Portal</span></td>
+                    <td class="filled">SARIG WFS<br><span class="service-type">WFS</span><br><span class="license-info">Open Data</span><br><span class="service-link">https://services.sarig.sa.gov.au/vector/mineral_tenements/wfs</span></td>
+                    <td class="filled">QSpatial Economy/MineralTenement<br><span class="source-note">Current and historic mining permits</span><br><span class="service-type">ArcGIS REST MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Mineral Resources Tasmania<br><span class="service-type">WFS</span><br><span class="license-info">CC BY 3.0 AU</span></td>
+                    <td class="empty">Not applicable<br><span class="source-note">ACT has minimal mining activity</span></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Property and Planning</td>
+                    <td class="partial">Outdated WFS layers available<br><span class="source-note">Current data requires paid service</span><br><span class="service-type">WFS (outdated) | Commercial (current)</span><br><span class="license-info">CC BY 4.0 (outdated) | Commercial</span></td>
+                    <td class="filled">Planning Zones and Policy Areas<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">QSpatial<br><span class="source-note">Planning datasets available</span><br><span class="service-type">ArcGIS REST</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Principal Planning Layers<br><span class="service-type">ArcGIS Services</span><br><span class="license-info">CC BY 4.0</span><br><span class="service-link">https://mapprod3.environment.nsw.gov.au/arcgis/services</span></td>
+                    <td class="filled">Planning Scheme Zones (ID: 86)<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Public/PlanningOnline<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Territory Plan Land Use Zones<br><span class="source-note">Development Applications & Licences</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Topography</td>
+                    <td class="empty">Not available</td>
+                    <td class="empty">Not available</td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Mapshare/Contour<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Public/TopographyAndRelief<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 3.0 AU</span></td>
+                    <td class="partial">Contours (2 - 8m)<br><span class="source-note">ACTmapi Survey Map - location uncertain</span><br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Cadastre</td>
+                    <td class="partial">Outdated WFS layers available<br><span class="source-note">Current data requires paid service (ILIS/NTLIS)</span><br><span class="service-type">WFS (outdated) | Commercial (current)</span><br><span class="license-info">CC BY 4.0 (outdated) | Commercial</span></td>
+                    <td class="restricted">Contact Land Services SA<br><span class="source-note">dataaccess@landservices.com.au - VAR licence required</span><br><span class="service-type">Commercial Access Only</span><br><span class="license-info">Commercial</span></td>
+                    <td class="filled">QSpatial<br><span class="source-note">Cadastre data available</span><br><span class="service-type">ArcGIS REST</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">NSW Spatial Services<br><span class="service-type">ArcGIS REST</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="partial">Mapshare/PropertyAndParcel<br><span class="source-note">Free viewing | Premium data requires commercial license</span><br><span class="service-type">ArcGIS MapServer | Commercial</span><br><span class="license-info">CC BY 4.0 (basic) | Commercial (premium)</span></td>
+                    <td class="filled">Public/CadastreParcels<br><span class="service-type">ArcGIS REST</span><br><span class="license-info">CC BY 3.0 AU</span></td>
+                    <td class="filled">Districts & Divisions<br><span class="source-note">ACTGOV District & Division datasets</span><br><span class="service-type">ArcGIS REST</span><br><span class="license-info">CC BY 4.0</span></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Roads</td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 AU</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">vicmap/Vicmap_Transport<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 3.0 AU</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                </tr>
+                <tr>
+                    <td class="category-header">Rail Network</td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0 AU</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">vicmap/Vicmap_Transport<br><span class="service-type">ArcGIS MapServer</span><br><span class="license-info">CC BY 4.0</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 3.0 AU</span></td>
+                    <td class="filled">Available<br><span class="service-type">Service type: Unknown</span><br><span class="license-info">CC BY 4.0</span></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="notes">
+            <h3>Legend</h3>
+            <p><span style="background-color: #d4edda; padding: 2px 6px;">Available</span> - Data source identified and accessible</p>
+            <p><span style="background-color: #fff3cd; padding: 2px 6px;">Partial</span> - Limited availability or conditions apply</p>
+            <p><span style="background-color: #f8d7da; padding: 2px 6px;">Restricted</span> - Paid service or restricted access required</p>
+            <p><span style="background-color: #f1f1f1; padding: 2px 6px;">Empty</span> - No data source identified or explicitly not available</p>
+            
+            <h3>Verified Licensing Information (2025)</h3>
+            <ul>
+                <li><strong>CC BY 4.0:</strong> Creative Commons Attribution 4.0 International - current standard for most jurisdictions</li>
+                <li><strong>CC BY 4.0 AU:</strong> Creative Commons Attribution 4.0 Australia - South Australia's preferred license</li>
+                <li><strong>CC BY 3.0 AU:</strong> Creative Commons Attribution 3.0 Australia - legacy licensing (Tasmania)</li>
+                <li><strong>Commercial:</strong> Requires paid licensing agreements (cadastre, premium services)</li>
+                <li><strong>Restricted:</strong> Special permissions required (Sacred Sites, VAR licenses)</li>
+                <li><strong>Open Data:</strong> Available without Creative Commons framework but open access</li>
+                <li><strong>Federal (BoM):</strong> Bureau of Meteorology federal licensing for Geofabric data</li>
+            </ul>
+            
+            <h3>Service Types Identified</h3>
+            <ul>
+                <li><strong>ArcGIS MapServer:</strong> Standard ArcGIS REST services for map visualization and querying</li>
+                <li><strong>ArcGIS REST:</strong> ArcGIS REST services with full feature access</li>
+                <li><strong>WFS (Web Feature Service):</strong> OGC standard for vector data access and download</li>
+                <li><strong>WMS (Web Map Service):</strong> OGC standard for map image services</li>
+                <li><strong>Download (SHP):</strong> Direct shapefile downloads available</li>
+                <li><strong>Commercial Access:</strong> Requires payment or special licensing arrangements</li>
+                <li><strong>Service type: Unknown:</strong> Available but service type not yet determined</li>
+            </ul>
+            
+            <h3>Key Licensing Insights from 2025 Research</h3>
+            <ul>
+                <li><strong>Standard Migration:</strong> Most jurisdictions have moved to CC BY 4.0 International from earlier CC BY 3.0 AU versions</li>
+                <li><strong>Cadastre Restrictions:</strong> NT and SA require commercial arrangements for current cadastral data; Victoria has dual open/commercial model</li>
+                <li><strong>Attribution Requirements:</strong> All CC licenses require attribution to respective state governments with specific format requirements</li>
+                <li><strong>Commercial Use Rights:</strong> Creative Commons licenses uniformly permit commercial use across all jurisdictions</li>
+                <li><strong>Tasmania Transition:</strong> Still using legacy CC BY 3.0 AU for many spatial datasets through TheList portal</li>
+                <li><strong>Premium Services:</strong> Victoria operates sophisticated dual system with free basic data and commercial premium services</li>
+            </ul>
+            
+            <h3>Notable Access Restrictions</h3>
+            <ul>
+                <li><strong>Sacred Sites (NT):</strong> Cultural restrictions requiring Aboriginal Areas Protection Authority consultation</li>
+                <li><strong>SA Cadastre:</strong> Value Added Reseller (VAR) licence required through Land Services SA</li>
+                <li><strong>NT Current Data:</strong> ILIS/NTLIS systems require 2-4 week licensing process for current property/planning data</li>
+                <li><strong>Victoria Premium:</strong> High-resolution imagery, elevation data, and detailed cadastre require annual subscriptions</li>
+                <li><strong>Federal Data:</strong> Geofabric managed by Bureau of Meteorology under separate federal licensing framework</li>
+            </ul>
+
+            <h3>Implementation Recommendations</h3>
+            <ul>
+                <li><strong>Attribution Compliance:</strong> Ensure attribution meets specific state requirements - formats vary significantly</li>
+                <li><strong>License Verification:</strong> Check individual dataset metadata as portal-wide policies may have exceptions</li>
+                <li><strong>Commercial Planning:</strong> Budget for cadastral data access in NT, SA, and premium Victoria services</li>
+                <li><strong>Legacy Support:</strong> Plan for ongoing support of CC BY 3.0 AU data from Tasmania until migration occurs</li>
+                <li><strong>Cultural Sensitivity:</strong> Implement appropriate consultation processes for heritage and sacred site data</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
